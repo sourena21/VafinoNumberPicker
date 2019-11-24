@@ -1,0 +1,2 @@
+include ':app', ':numpad'
+rootProject.name='VafinoNumberPicker'
