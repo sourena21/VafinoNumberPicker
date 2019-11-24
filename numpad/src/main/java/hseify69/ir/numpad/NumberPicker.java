@@ -92,28 +92,28 @@ public class NumberPicker extends LinearLayout {
         return minValue;
     }
 
-    public void setMinValue(long minVal) {
-        if (minVal < maxValue) {
-            this.minValue = minVal;
+    public void setMinValue(long min) {
+        if (min < maxValue) {
+            this.minValue = min;
         }
-        if (minVal > value) {
-            value = minValue;
+        if (min > value) {
+            value = min;
+            txtCount.setText(formatter.format(value));
         }
-        txtCount.setText(formatter.format(value));
     }
 
     public long getMaxValue() {
         return maxValue;
     }
 
-    public void setMaxValue(long maxVal) {
-        if (maxVal > minValue) {
-            this.maxValue = maxVal;
+    public void setMaxValue(long max) {
+        if (max > minValue) {
+            this.maxValue = max;
         }
-        if (maxVal < value) {
-            value = maxValue;
+        if (max < value) {
+            value = max;
+            txtCount.setText(formatter.format(value));
         }
-        txtCount.setText(formatter.format(value));
     }
 
     public interface OnChangeValue {
