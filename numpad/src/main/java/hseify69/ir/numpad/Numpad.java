@@ -129,20 +129,17 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
     private void cleanView() {
         imbBackSpace.setVisibility(INVISIBLE);
         enteredNumber = "";
+        txtEnteredNumber.setText(hintText);
+        txtEnteredNumber.setTextColor(getResources().getColor(R.color.colorGray));
         if (onChangeEntered != null) {
             onChangeEntered.onChange(enteredNumber);
         }
-        txtEnteredNumber.setText(hintText);
-        txtEnteredNumber.setTextColor(getResources().getColor(R.color.colorGray));
     }
 
     private void backSpaceLast() {
         if (enteredNumber.length() > 0) {
             enteredNumber = enteredNumber.substring(0, enteredNumber.length() - 1);
             if (enteredNumber.length() > 0) {
-                if (onChangeEntered != null) {
-                    onChangeEntered.onChange(enteredNumber);
-                }
                 showEnteredNumber(enteredNumber);
             } else {
                 cleanView();
@@ -154,15 +151,15 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
         imbBackSpace.setVisibility(VISIBLE);
         txtEnteredNumber.setText(number);
         txtEnteredNumber.setTextColor(getResources().getColor(R.color.colorBlack));
+        if (onChangeEntered != null) {
+            onChangeEntered.onChange(enteredNumber);
+        }
     }
 
     private void addNumber(int num) {
         if (enteredNumber.length() < maxLength) {
             enteredNumber += num;
             showEnteredNumber(enteredNumber);
-            if (onChangeEntered != null) {
-                onChangeEntered.onChange(enteredNumber);
-            }
             if (onNumberEnter != null) {
                 onNumberEnter.onEnter(num, enteredNumber);
             }
