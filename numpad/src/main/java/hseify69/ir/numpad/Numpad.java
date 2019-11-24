@@ -16,6 +16,7 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
     String hintText = "";
     OnMobileDetected onMobileDetected;
     OnNumberEnter onNumberEnter;
+    OnChangeEntered onChangeEntered;
 
     Button btnNumber0, btnNumber1, btnNumber2, btnNumber3, btnNumber4, btnNumber5, btnNumber6,
             btnNumber7, btnNumber8, btnNumber9;
@@ -127,6 +128,9 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
     private void cleanView() {
         imbBackSpace.setVisibility(INVISIBLE);
         enteredNumber = "";
+        if (onChangeEntered != null) {
+            onChangeEntered.onChange(enteredNumber);
+        }
         txtEnteredNumber.setText(hintText);
         txtEnteredNumber.setTextColor(getResources().getColor(R.color.colorGray));
     }
@@ -135,6 +139,9 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
         if (enteredNumber.length() > 0) {
             enteredNumber = enteredNumber.substring(0, enteredNumber.length() - 1);
             if (enteredNumber.length() > 0) {
+                if (onChangeEntered != null) {
+                    onChangeEntered.onChange(enteredNumber);
+                }
                 showEnteredNumber(enteredNumber);
             } else {
                 cleanView();
@@ -151,6 +158,9 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
     private void addNumber(int num) {
         enteredNumber += num;
         showEnteredNumber(enteredNumber);
+        if (onChangeEntered != null) {
+            onChangeEntered.onChange(enteredNumber);
+        }
         if (onNumberEnter != null) {
             onNumberEnter.onEnter(num, enteredNumber);
         }
@@ -186,6 +196,14 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
 
     public interface OnNumberEnter {
         void onEnter(int number, String wholeEntered);
+    }
+
+    public interface OnChangeEntered {
+        void onChange(String wholeEntered);
+    }
+
+    public void setOnChangeEntered(OnChangeEntered listener) {
+        onChangeEntered = listener;
     }
 
     public void setOnMobileDetected(OnMobileDetected listener) {
