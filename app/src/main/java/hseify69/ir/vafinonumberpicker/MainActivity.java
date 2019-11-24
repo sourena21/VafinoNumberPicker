@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
         Numpad numpad = findViewById(R.id.numpad);
 
+        numpad.setMaxLength(10);
+
         numpad.setOnChangeEntered(new Numpad.OnChangeEntered() {
             @Override
             public void onChange(String wholeEntered) {

@@ -14,6 +14,7 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
 
     String enteredNumber = "";
     String hintText = "";
+    int maxLength = 100;
     OnMobileDetected onMobileDetected;
     OnNumberEnter onNumberEnter;
     OnChangeEntered onChangeEntered;
@@ -156,17 +157,19 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
     }
 
     private void addNumber(int num) {
-        enteredNumber += num;
-        showEnteredNumber(enteredNumber);
-        if (onChangeEntered != null) {
-            onChangeEntered.onChange(enteredNumber);
-        }
-        if (onNumberEnter != null) {
-            onNumberEnter.onEnter(num, enteredNumber);
-        }
-        if (utils.isEnteredCellNumber(enteredNumber) && onMobileDetected != null) {
-            onMobileDetected.onDetect(utils.getStandardMobileFormat(enteredNumber));
-            cleanView();
+        if (enteredNumber.length() < maxLength) {
+            enteredNumber += num;
+            showEnteredNumber(enteredNumber);
+            if (onChangeEntered != null) {
+                onChangeEntered.onChange(enteredNumber);
+            }
+            if (onNumberEnter != null) {
+                onNumberEnter.onEnter(num, enteredNumber);
+            }
+            if (utils.isEnteredCellNumber(enteredNumber) && onMobileDetected != null) {
+                onMobileDetected.onDetect(utils.getStandardMobileFormat(enteredNumber));
+                cleanView();
+            }
         }
     }
 
@@ -216,5 +219,13 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
 
     public void setInputDisplayVisibility(int visibility) {
         txtEnteredNumber.setVisibility(visibility);
+    }
+
+    public int getMaxLength() {
+        return maxLength;
+    }
+
+    public void setMaxLength(int maxLength) {
+        this.maxLength = maxLength;
     }
 }
