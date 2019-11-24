@@ -1,6 +1,6 @@
 # VafinoNumberPicker
 
-
+[![](https://jitpack.io/v/sourena21/VafinoNumberPicker.svg)](https://jitpack.io/#sourena21/VafinoNumberPicker)
 
 ## How to use
 to use it follow below steps:
@@ -10,7 +10,7 @@ Add the JitPack repository to your build file.
 Add it in your root build.gradle at the end of repositories:
 
 ```
-allprojects {
+    allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
@@ -22,15 +22,18 @@ allprojects {
 Add the dependency
 
 ```
-dependencies {
+    dependencies {
 	        implementation 'com.github.sourena21:VafinoNumberPicker:Tag'
 	}
 ```
 
-# Numpad
+# Views
+There are two view and below you can:
 
-It is a customised numpad to use fixed in view
+### Numpad
 
-# NumberPicker
+It is a custom numpad to use fixed in view
+
+### NumberPicker
 
 It is a simple numberpicker to use increase and decrease value listener separately and developed because others do not support this feature.
