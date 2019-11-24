@@ -27,10 +27,10 @@ dependencies {
 	}
 ```
 
-#Numpad
+# Numpad
 
 It is a customised numpad to use fixed in view
 
-#NumberPicker
+# NumberPicker
 
 It is a simple numberpicker to use increase and decrease value listener separately and developed because others do not support this feature.
