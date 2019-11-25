@@ -85,6 +85,7 @@ public class NumberPicker extends LinearLayout {
     public void setValue(long val) {
         if (val <= maxValue && val >= minValue) {
             value = val;
+            txtCount.setText(formatter.format(value));
         }
     }
 
