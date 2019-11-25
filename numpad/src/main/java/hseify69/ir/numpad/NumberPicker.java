@@ -84,7 +84,7 @@ public class NumberPicker extends LinearLayout {
 
     public void setValue(long val) {
         if (val <= maxValue && val >= minValue) {
-            this.value = value;
+            value = val;
         }
     }
 
