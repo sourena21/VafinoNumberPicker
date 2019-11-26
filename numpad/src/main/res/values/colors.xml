@@ -12,8 +12,9 @@
     <color name="colorBlueDark">#406093</color>
     <color name="colorCyan">#00E0D7</color>
     <color name="colorCyanDark">#00CEC4</color>
-    <color name="colorGreen">#35A750</color>
-    <color name="colorGreenDark">#459E48</color>
+    <color name="colorGreen">#4CAF50</color>
+    <color name="colorGreenDark">#3C8F3F</color>
+    <color name="colorGreenFade">#8F4CAF50</color>
     <color name="colorYellowLight">#FED595</color>
     <color name="colorYellow">#F8BB15</color>
     <color name="colorYellowDark">#E4B008</color>
@@ -24,5 +25,7 @@
     <color name="colorRedDark">#CC2929</color>
     <color name="colorBrown">#8E0016</color>
     <color name="transparent">#00000000</color>
+    <color name="colorWhiteFade">#CFFFFFFF</color>
+    <color name="colorBlackFade">#3F000000</color>
 
 </resources>

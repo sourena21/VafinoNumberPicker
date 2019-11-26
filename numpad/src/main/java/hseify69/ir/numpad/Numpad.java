@@ -68,13 +68,6 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
         btnNumber9.setOnClickListener(this);
         imbBackSpace.setOnClickListener(this);
 
-//        imbBackSpace.setOnLongClickListener(new OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View view) {
-//                cleanView();
-//                return false;
-//            }
-//        });
         imbBackSpace.setOnTouchListener(new OnTouchListener() {
 
             long pressAmount = 0;
