@@ -1,12 +1,14 @@
 package hseify69.ir.numpad;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
     OnNumberEnter onNumberEnter;
     OnChangeEntered onChangeEntered;
 
+    LinearLayout llNumBox;
     Button btnNumber0, btnNumber1, btnNumber2, btnNumber3, btnNumber4, btnNumber5, btnNumber6,
             btnNumber7, btnNumber8, btnNumber9;
     ImageButton imbBackSpace;
@@ -43,6 +46,7 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
         this.removeAllViews();
         View v = View.inflate(context, R.layout.numpad, null);
 
+        llNumBox = v.findViewById(R.id.llNumpadBox);
         btnNumber0 = v.findViewById(R.id.btnNumber0);
         btnNumber1 = v.findViewById(R.id.btnNumber1);
         btnNumber2 = v.findViewById(R.id.btnNumber2);
@@ -181,6 +185,10 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
         if (enteredNumber.length() == 0) {
             cleanView();
         }
+    }
+
+    public void setBackSpaceButtonBackground(int src) {
+        imbBackSpace.setImageResource(src);
     }
 
     public interface OnMobileDetected {

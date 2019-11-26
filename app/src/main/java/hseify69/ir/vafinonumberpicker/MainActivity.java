@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
 
         numpad.setMaxLength(11);
         numpad.setHintText("شماره تلفن همراه");
+        numpad.setNumpadBackground(R.drawable.img_keypad_background);
 
         numpad.setOnChangeEntered(new Numpad.OnChangeEntered() {
             @Override

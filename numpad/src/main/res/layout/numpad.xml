@@ -11,35 +11,19 @@
         android:orientation="vertical"
         android:padding="2dp">
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/txtEnteredNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="56dp"
             android:layout_marginRight="56dp"
-            android:layout_marginBottom="56dp">
-
-            <TextView
-                android:id="@+id/txtEnteredNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom_black"
-                android:gravity="center"
-                android:padding="16dp"
-                android:textColor="@color/colorGrayDark"
-                android:textSize="@dimen/text_extra_large_size"
-                android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/imbBackSpace"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_backspace"
-                android:visibility="invisible" />
-        </RelativeLayout>
+            android:layout_marginBottom="56dp"
+            android:background="@drawable/border_bottom_black"
+            android:gravity="center"
+            android:padding="16dp"
+            android:textColor="@color/colorGrayDark"
+            android:textSize="@dimen/text_extra_large_size"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -178,7 +162,18 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_margin="8dp"
-                    android:layout_weight="1"></RelativeLayout>
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        android:id="@+id/imbBackSpace"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_centerInParent="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_backspace"
+                        android:visibility="invisible" />
+                </RelativeLayout>
 
                 <Button
                     android:id="@+id/btnNumber0"
