@@ -4,28 +4,17 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorBlackFade">#3F000000</color>
     <color name="colorGrayDark">#838383</color>
     <color name="colorGray">#C0C0C0</color>
     <color name="colorGrayLight">#E0E0E0</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhiteFade">#CFFFFFFF</color>
     <color name="colorBlue">#6187C7</color>
     <color name="colorBlueDark">#406093</color>
-    <color name="colorCyan">#00E0D7</color>
-    <color name="colorCyanDark">#00CEC4</color>
-    <color name="colorGreen">#4CAF50</color>
-    <color name="colorGreenDark">#3C8F3F</color>
-    <color name="colorGreenFade">#8F4CAF50</color>
-    <color name="colorYellowLight">#FED595</color>
-    <color name="colorYellow">#F8BB15</color>
-    <color name="colorYellowDark">#E4B008</color>
-    <color name="colorOrangeLight">#FF792D</color>
-    <color name="colorOrange">#FF650B</color>
     <color name="colorRedLight">#EA4436</color>
     <color name="colorRed">#E62E2E</color>
     <color name="colorRedDark">#CC2929</color>
-    <color name="colorBrown">#8E0016</color>
     <color name="transparent">#00000000</color>
-    <color name="colorWhiteFade">#CFFFFFFF</color>
-    <color name="colorBlackFade">#3F000000</color>
 
 </resources>
