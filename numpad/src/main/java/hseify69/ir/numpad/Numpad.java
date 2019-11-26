@@ -1,14 +1,11 @@
 package hseify69.ir.numpad;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,10 +17,11 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
     OnMobileDetected onMobileDetected;
     OnNumberEnter onNumberEnter;
     OnChangeEntered onChangeEntered;
+    OnSubmitEntered onSubmitEntered;
 
     LinearLayout llNumBox;
     Button btnNumber0, btnNumber1, btnNumber2, btnNumber3, btnNumber4, btnNumber5, btnNumber6,
-            btnNumber7, btnNumber8, btnNumber9;
+            btnNumber7, btnNumber8, btnNumber9, btnSubmit;
     ImageButton imbBackSpace;
     TextView txtEnteredNumber;
 
@@ -47,6 +45,7 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
         View v = View.inflate(context, R.layout.numpad, null);
 
         llNumBox = v.findViewById(R.id.llNumpadBox);
+        btnSubmit = v.findViewById(R.id.btnSubmit);
         btnNumber0 = v.findViewById(R.id.btnNumber0);
         btnNumber1 = v.findViewById(R.id.btnNumber1);
         btnNumber2 = v.findViewById(R.id.btnNumber2);
@@ -89,6 +88,14 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
                     pressAmount = 0;
                 }
                 return false;
+            }
+        });
+        btnSubmit.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onSubmitEntered != null) {
+                    onSubmitEntered.onSubmit(enteredNumber);
+                }
             }
         });
 
@@ -203,6 +210,16 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
         void onChange(String wholeEntered);
     }
 
+    public void setOnSubmitEntered(OnSubmitEntered listener) {
+        onSubmitEntered = listener;
+    }
+
+    public void setSubmitButtonVisibility(int visibility) {
+        if (visibility == VISIBLE || visibility == INVISIBLE || visibility == GONE) {
+            btnSubmit.setVisibility(visibility);
+        }
+    }
+
     public void setOnChangeEntered(OnChangeEntered listener) {
         onChangeEntered = listener;
     }
@@ -225,5 +242,9 @@ public class Numpad extends LinearLayout implements View.OnClickListener {
 
     public void setMaxLength(int maxLength) {
         this.maxLength = maxLength;
+    }
+
+    public interface OnSubmitEntered {
+        void onSubmit(String wholeEntered);
     }
 }

@@ -10,6 +10,8 @@
     <color name="colorGrayLight">#E0E0E0</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorWhiteFade">#CFFFFFFF</color>
+    <color name="colorGreen">#4CAF50</color>
+    <color name="colorGreenDark">#3D9140</color>
     <color name="colorBlue">#6187C7</color>
     <color name="colorBlueDark">#406093</color>
     <color name="colorRedLight">#EA4436</color>

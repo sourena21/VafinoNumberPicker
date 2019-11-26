@@ -3,6 +3,8 @@ package hseify69.ir.vafinonumberpicker;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import hseify69.ir.numpad.Numpad;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -18,10 +20,12 @@ public class MainActivity extends Activity {
 
         numpad.setMaxLength(11);
         numpad.setHintText("شماره تلفن همراه");
+        numpad.setSubmitButtonVisibility(View.VISIBLE);
 
-        numpad.setOnChangeEntered(new Numpad.OnChangeEntered() {
+        numpad.setOnSubmitEntered(new Numpad.OnSubmitEntered() {
             @Override
-            public void onChange(String wholeEntered) {
+            public void onSubmit(String wholeEntered) {
+                Toast.makeText(MainActivity.this, wholeEntered, Toast.LENGTH_SHORT).show();
             }
         });
     }
