@@ -172,7 +172,6 @@
                         android:background="@color/transparent"
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_backspace"
-                        android:tint="@color/colorYellow"
                         android:visibility="invisible" />
                 </RelativeLayout>
 
