@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/txtName"
@@ -42,6 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        app:displayVisibility="visible"
+        app:inputHintText="ورودی"
         app:inputType="persian"
         app:maxLeangth="10" />
 </RelativeLayout>

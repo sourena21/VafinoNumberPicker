@@ -11,5 +11,10 @@
             <enum name="gone" value="8" />
         </attr>
         <attr name="maxLeangth" format="integer" />
+        <attr name="inputHintText" format="string" />
+        <attr name="inputTextColor" format="color" />
+        <attr name="inputHintColor" format="color" />
+        <attr name="inputValue" format="string" />
+        <attr name="inputTextSize" format="dimension" />
     </declare-styleable>
 </resources>

@@ -18,6 +18,11 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     String enteredNumber = "";
     String hintText = "";
     int maxLength = Integer.MAX_VALUE;
+    int textColor = 0;
+    int hintColor = 0;
+    int inputType = 0;
+    int displayVisibility = 0;
+
     OnMobileDetected onMobileDetected;
     OnNumberEnter onNumberEnter;
     OnChangeEntered onChangeEntered;
@@ -51,21 +56,26 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         txtEnteredNumber = v.findViewById(R.id.VK_txtInput);
 
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.VafinoKeyboard);
-        int inputType = ta.getInteger(R.styleable.VafinoKeyboard_inputType, 1);
-        int displayVisibility = ta.getInteger(R.styleable.VafinoKeyboard_displayVisibility, VISIBLE);
-        maxLength = ta.getInteger(R.styleable.VafinoKeyboard_maxLeangth, Integer.MAX_VALUE);
 
-        switch (inputType) {
-            case 1:
-                initKeyboardByPersian(context);
-                break;
-            case 2:
-                initKeyboardByDecimal(context);
-                break;
-            default:
-                initKeyboardByPersian(context);
-                break;
+        inputType = ta.getInteger(R.styleable.VafinoKeyboard_inputType, 1);
+        displayVisibility = ta.getInteger(R.styleable.VafinoKeyboard_displayVisibility, VISIBLE);
+        maxLength = ta.getInteger(R.styleable.VafinoKeyboard_maxLeangth, Integer.MAX_VALUE);
+        String tempHint = ta.getString(R.styleable.VafinoKeyboard_inputHintText);
+        if (tempHint != null && tempHint.length() > 0) {
+            hintText = tempHint;
         }
+        String tempValue = ta.getString(R.styleable.VafinoKeyboard_inputValue);
+        if (tempValue != null && tempValue.length() > 0) {
+            enteredNumber = tempValue;
+        }
+        textColor = ta.getColor(R.styleable.VafinoKeyboard_inputTextColor, context.getResources().getColor(R.color.colorBlack));
+        hintColor = ta.getColor(R.styleable.VafinoKeyboard_inputHintColor, context.getResources().getColor(R.color.colorGrayDark));
+
+        txtEnteredNumber.setHint(hintText);
+        txtEnteredNumber.setText(enteredNumber);
+        txtEnteredNumber.setTextColor(textColor);
+        txtEnteredNumber.setHintTextColor(hintColor);
+
         switch (displayVisibility) {
             case VISIBLE:
                 setInputDisplayVisibility(VISIBLE);
@@ -80,7 +90,17 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
                 setInputDisplayVisibility(VISIBLE);
                 break;
         }
-
+        switch (inputType) {
+            case 1:
+                initKeyboardByPersian(context);
+                break;
+            case 2:
+                initKeyboardByDecimal(context);
+                break;
+            default:
+                initKeyboardByPersian(context);
+                break;
+        }
 
         this.addView(v);
     }
@@ -101,11 +121,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
     private void cleanView() {
         enteredNumber = "";
-        txtEnteredNumber.setText(hintText);
-        txtEnteredNumber.setTextColor(getResources().getColor(R.color.colorGray));
-        if (onChangeEntered != null) {
-            onChangeEntered.onChange(enteredNumber);
-        }
+        showEnteredNumber(enteredNumber);
     }
 
     private void backSpaceLast() {
@@ -121,7 +137,6 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
     private void showEnteredNumber(String text) {
         txtEnteredNumber.setText(text);
-        txtEnteredNumber.setTextColor(getResources().getColor(R.color.colorBlack));
         if (onChangeEntered != null) {
             onChangeEntered.onChange(enteredNumber);
         }
@@ -202,7 +217,9 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     }
 
     public void setInputDisplayVisibility(int visibility) {
-        txtEnteredNumber.setVisibility(visibility);
+        if (visibility == VISIBLE || visibility == INVISIBLE || visibility == GONE) {
+            txtEnteredNumber.setVisibility(visibility);
+        }
     }
 
     public int getMaxLength() {
