@@ -1,10 +1,14 @@
 package hseify69.ir.numpad.keyboards;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import hseify69.ir.numpad.R;
 import hseify69.ir.numpad.helpers.Utils;
@@ -19,33 +23,63 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     OnChangeEntered onChangeEntered;
     OnSubmitEntered onSubmitEntered;
 
+    View v;
     LinearLayout llKeyboardBox, llKeypadBox;
     TextView txtEnteredNumber;
 
     public VafinoKeyboard(Context context) {
         super(context);
-        initView(context);
+        initView(context, null);
     }
 
     public VafinoKeyboard(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initView(context);
+        initView(context, attrs);
     }
 
     public VafinoKeyboard(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView(context);
+        initView(context, attrs);
     }
 
-    private void initView(Context context) {
+    private void initView(Context context, @Nullable AttributeSet attrs) {
         this.removeAllViews();
-        View v = View.inflate(context, R.layout.vafino_keyboard, null);
+        v = View.inflate(context, R.layout.vafino_keyboard, null);
 
         llKeyboardBox = v.findViewById(R.id.VK_llKeyboardBox);
         llKeypadBox = v.findViewById(R.id.VK_rlKeypadBox);
         txtEnteredNumber = v.findViewById(R.id.VK_txtInput);
 
-        initKeyboardByPersian(context);
+        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.VafinoKeyboard);
+        int inputType = ta.getInteger(R.styleable.VafinoKeyboard_inputType, 1);
+        int displayVisibility = ta.getInteger(R.styleable.VafinoKeyboard_displayVisibility, VISIBLE);
+
+        switch (inputType) {
+            case 1:
+                initKeyboardByPersian(context);
+                break;
+            case 2:
+                initKeyboardByDecimal(context);
+                break;
+            default:
+                initKeyboardByPersian(context);
+                break;
+        }
+        switch (displayVisibility) {
+            case VISIBLE:
+                setInputDisplayVisibility(VISIBLE);
+                break;
+            case INVISIBLE:
+                setInputDisplayVisibility(INVISIBLE);
+                break;
+            case GONE:
+                setInputDisplayVisibility(GONE);
+                break;
+            default:
+                setInputDisplayVisibility(VISIBLE);
+                break;
+        }
+
 
         this.addView(v);
     }
@@ -176,6 +210,16 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
     public void setMaxLength(int maxLength) {
         this.maxLength = maxLength;
+    }
+
+    public void setInput(TextView textView) {
+        if (textView != null) {
+            txtEnteredNumber = textView;
+            enteredNumber = textView.getText().toString();
+        } else {
+            txtEnteredNumber = v.findViewById(R.id.VK_txtInput);
+            enteredNumber = txtEnteredNumber.getText().toString();
+        }
     }
 
     @Override
