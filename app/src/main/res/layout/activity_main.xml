@@ -42,6 +42,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:displayVisibility="gone"
-        app:inputType="persian" />
+        app:inputType="persian"
+        app:maxLeangth="10" />
 </RelativeLayout>

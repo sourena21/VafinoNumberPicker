@@ -10,5 +10,6 @@
             <enum name="invisible" value="4" />
             <enum name="gone" value="8" />
         </attr>
+        <attr name="maxLeangth" format="integer" />
     </declare-styleable>
 </resources>

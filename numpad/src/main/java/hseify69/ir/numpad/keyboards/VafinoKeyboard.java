@@ -17,7 +17,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
     String enteredNumber = "";
     String hintText = "";
-    int maxLength = 100;
+    int maxLength = Integer.MAX_VALUE;
     OnMobileDetected onMobileDetected;
     OnNumberEnter onNumberEnter;
     OnChangeEntered onChangeEntered;
@@ -53,6 +53,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.VafinoKeyboard);
         int inputType = ta.getInteger(R.styleable.VafinoKeyboard_inputType, 1);
         int displayVisibility = ta.getInteger(R.styleable.VafinoKeyboard_displayVisibility, VISIBLE);
+        maxLength = ta.getInteger(R.styleable.VafinoKeyboard_maxLeangth, Integer.MAX_VALUE);
 
         switch (inputType) {
             case 1:

@@ -26,25 +26,25 @@ public class MainActivity extends Activity {
         txtFamily = findViewById(R.id.txtFamily);
         keyboard = findViewById(R.id.keyboard);
 
-        keyboard.setInput(txtName);
-        setBackgroundResource(txtName, R.drawable.border_bottom_accent);
-
-        txtFamily.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                keyboard.setInput(txtFamily);
-                setBackgroundResource(txtFamily, R.drawable.border_bottom_accent);
-                setBackgroundResource(txtName, R.drawable.border_bottom_black);
-            }
-        });
-        txtName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                keyboard.setInput(txtName);
-                setBackgroundResource(txtName, R.drawable.border_bottom_accent);
-                setBackgroundResource(txtFamily, R.drawable.border_bottom_black);
-            }
-        });
+//        keyboard.setInput(txtName);
+//        setBackgroundResource(txtName, R.drawable.border_bottom_accent);
+//
+//        txtFamily.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                keyboard.setInput(txtFamily);
+//                setBackgroundResource(txtFamily, R.drawable.border_bottom_accent);
+//                setBackgroundResource(txtName, R.drawable.border_bottom_black);
+//            }
+//        });
+//        txtName.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                keyboard.setInput(txtName);
+//                setBackgroundResource(txtName, R.drawable.border_bottom_accent);
+//                setBackgroundResource(txtFamily, R.drawable.border_bottom_black);
+//            }
+//        });
     }
 
     private void setBackgroundResource(TextView textView, int src) {
