@@ -1,6 +1,6 @@
-package hseify69.ir.numpad;
+package hseify69.ir.numpad.helpers;
 
-class Consts {
+public class Consts {
 
     public static final long initValue = 1;
     public static final long initMaxValue = 10;

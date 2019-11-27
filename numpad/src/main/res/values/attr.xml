@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VafinoKeyboard">
+        <attr name="inputType" format="string">
+            <enum name="persian" value="1" />
+            <enum name="number_decimal" value="2" />
+        </attr>
+        <attr name="displayVisibility" format="integer">
+            <enum name="visible" value="0" />
+            <enum name="invisible" value="4" />
+            <enum name="gone" value="8" />
+        </attr>
+    </declare-styleable>
+</resources>

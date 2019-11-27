@@ -4,30 +4,56 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import hseify69.ir.numpad.Numpad;
+import java.util.zip.GZIPInputStream;
+
+import hseify69.ir.numpad.keyboards.VafinoKeyboard;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends Activity {
+
+    TextView txtName, txtFamily;
+    VafinoKeyboard keyboard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Numpad numpad = findViewById(R.id.numpad);
+        txtName = findViewById(R.id.txtName);
+        txtFamily = findViewById(R.id.txtFamily);
+        keyboard = findViewById(R.id.keyboard);
 
-        numpad.setMaxLength(11);
-        numpad.setHintText("شماره تلفن همراه");
-        numpad.setSubmitButtonVisibility(View.VISIBLE);
+        keyboard.setInput(txtName);
+        setBackgroundResource(txtName, R.drawable.border_bottom_accent);
 
-        numpad.setOnSubmitEntered(new Numpad.OnSubmitEntered() {
+        txtFamily.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSubmit(String wholeEntered) {
-                Toast.makeText(MainActivity.this, wholeEntered, Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                keyboard.setInput(txtFamily);
+                setBackgroundResource(txtFamily, R.drawable.border_bottom_accent);
+                setBackgroundResource(txtName, R.drawable.border_bottom_black);
             }
         });
+        txtName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                keyboard.setInput(txtName);
+                setBackgroundResource(txtName, R.drawable.border_bottom_accent);
+                setBackgroundResource(txtFamily, R.drawable.border_bottom_black);
+            }
+        });
+    }
+
+    private void setBackgroundResource(TextView textView, int src) {
+        int top = textView.getPaddingTop();
+        int bottom = textView.getPaddingBottom();
+        int rigth = textView.getPaddingRight();
+        int left = textView.getPaddingLeft();
+        textView.setBackgroundResource(src);
+        textView.setPadding(left, top, rigth, bottom);
     }
 
     @Override

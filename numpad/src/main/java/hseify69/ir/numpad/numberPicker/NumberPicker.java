@@ -1,4 +1,4 @@
-package hseify69.ir.numpad;
+package hseify69.ir.numpad.numberPicker;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.text.DecimalFormat;
+
+import hseify69.ir.numpad.R;
+import hseify69.ir.numpad.helpers.Consts;
 
 public class NumberPicker extends LinearLayout {
 
