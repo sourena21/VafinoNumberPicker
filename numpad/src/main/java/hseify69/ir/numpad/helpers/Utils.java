@@ -1,6 +1,6 @@
-package hseify69.ir.numpad;
+package hseify69.ir.numpad.helpers;
 
-class utils {
+public class Utils {
 
     public static String getStandardMobileFormat(String cell) {
         if (cell.length() == 11 && cell.substring(0, 2).equals("09")) {

@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <hseify69.ir.numpad.Numpad
-        android:id="@+id/numpad"
+    <hseify69.ir.numpad.keyboards.VafinoKeyboard
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />

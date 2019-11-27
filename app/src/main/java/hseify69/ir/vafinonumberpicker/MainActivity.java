@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import hseify69.ir.numpad.Numpad;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends Activity {
@@ -15,19 +14,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Numpad numpad = findViewById(R.id.numpad);
-
-        numpad.setMaxLength(11);
-        numpad.setHintText("شماره تلفن همراه");
-        numpad.setSubmitButtonVisibility(View.VISIBLE);
-
-        numpad.setOnSubmitEntered(new Numpad.OnSubmitEntered() {
-            @Override
-            public void onSubmit(String wholeEntered) {
-                Toast.makeText(MainActivity.this, wholeEntered, Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
