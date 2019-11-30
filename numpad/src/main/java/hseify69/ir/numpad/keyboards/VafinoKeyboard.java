@@ -23,6 +23,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     int inputType = 0;
     int displayVisibility = 0;
     boolean showCharPopup = false;
+    boolean showSubmitButton = false;
 
     OnMobileDetected onMobileDetected;
     OnNumberEnter onNumberEnter;
@@ -72,6 +73,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         textColor = ta.getColor(R.styleable.VafinoKeyboard_inputTextColor, context.getResources().getColor(R.color.colorBlack));
         hintColor = ta.getColor(R.styleable.VafinoKeyboard_inputHintColor, context.getResources().getColor(R.color.colorGrayDark));
         showCharPopup = ta.getBoolean(R.styleable.VafinoKeyboard_showPersianCharPopup, false);
+        showSubmitButton = ta.getBoolean(R.styleable.VafinoKeyboard_showSubmitButton, false);
 
         txtEnteredNumber.setHint(hintText);
         txtEnteredNumber.setText(enteredNumber);
@@ -118,6 +120,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     private void initKeyboardByDecimal(Context context) {
         DecimalKeypad decimalKeypad = new DecimalKeypad(context);
         decimalKeypad.setOnKeypadEvent(this);
+        decimalKeypad.setShowSubmitButton(showSubmitButton);
         llKeypadBox.removeAllViews();
         llKeypadBox.addView(decimalKeypad);
     }
@@ -249,6 +252,14 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
     public void setShowCharPopup(boolean flag) {
         this.showCharPopup = flag;
+    }
+
+    public boolean isShowSubmitButton() {
+        return showSubmitButton;
+    }
+
+    public void setShowSubmitButton(boolean showSubmitButton) {
+        this.showSubmitButton = showSubmitButton;
     }
 
     @Override

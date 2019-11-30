@@ -17,5 +17,6 @@
         <attr name="inputValue" format="string" />
         <attr name="inputTextSize" format="dimension" />
         <attr name="showPersianCharPopup" format="boolean" />
+        <attr name="showSubmitButton" format="boolean" />
     </declare-styleable>
 </resources>

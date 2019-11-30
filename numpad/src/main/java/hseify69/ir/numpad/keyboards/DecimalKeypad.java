@@ -13,6 +13,7 @@ import hseify69.ir.numpad.R;
 
 public class DecimalKeypad extends LinearLayout implements View.OnClickListener {
 
+    boolean showSubmitButton = false;
     OnKeypadEvent onKeypadEvent;
 
     LinearLayout llNumBox;
@@ -154,6 +155,19 @@ public class DecimalKeypad extends LinearLayout implements View.OnClickListener 
     public void setSubmitButtonVisibility(int visibility) {
         if (visibility == VISIBLE || visibility == INVISIBLE || visibility == GONE) {
             btnSubmit.setVisibility(visibility);
+        }
+    }
+
+    public boolean isShowSubmitButton() {
+        return showSubmitButton;
+    }
+
+    public void setShowSubmitButton(boolean flag) {
+        this.showSubmitButton = flag;
+        if (flag) {
+            btnSubmit.setVisibility(VISIBLE);
+        } else {
+            btnSubmit.setVisibility(INVISIBLE);
         }
     }
 }

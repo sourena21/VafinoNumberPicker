@@ -23,7 +23,8 @@ import hseify69.ir.numpad.R;
 
 public class PersianKeypad extends LinearLayout {
 
-    boolean showCharPopup = true;
+    boolean showCharPopup = false;
+    boolean showSubmitButton = false;
     OnKeypadEvent onKeypadEvent;
 
     Button btnChar0, btnChar1, btnChar2, btnChar3, btnChar4, btnChar5, btnChar6, btnChar7, btnChar8,
@@ -392,5 +393,13 @@ public class PersianKeypad extends LinearLayout {
 
     public void setShowCharPopup(boolean flag) {
         showCharPopup = flag;
+    }
+
+    public boolean isShowSubmitButton() {
+        return showSubmitButton;
+    }
+
+    public void setShowSubmitButton(boolean flag) {
+        this.showSubmitButton = flag;
     }
 }

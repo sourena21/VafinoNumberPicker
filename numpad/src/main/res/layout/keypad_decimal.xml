@@ -177,6 +177,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/numpad_button_background_green"
                     android:text="تایید"
+                    android:visibility="invisible"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/text_extra_large_size" />
             </RelativeLayout>
