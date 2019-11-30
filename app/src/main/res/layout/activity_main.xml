@@ -46,5 +46,6 @@
         app:displayVisibility="visible"
         app:inputHintText="ورودی"
         app:inputType="persian"
-        app:maxLeangth="10" />
+        app:maxLeangth="10"
+        app:showPersianCharPopup="true" />
 </RelativeLayout>

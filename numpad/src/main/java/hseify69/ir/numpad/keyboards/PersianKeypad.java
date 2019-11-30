@@ -1,17 +1,29 @@
 package hseify69.ir.numpad.keyboards;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+
+import androidx.core.widget.PopupWindowCompat;
 
 import hseify69.ir.numpad.R;
 
 public class PersianKeypad extends LinearLayout {
 
+    boolean showCharPopup = true;
     OnKeypadEvent onKeypadEvent;
 
     Button btnChar0, btnChar1, btnChar2, btnChar3, btnChar4, btnChar5, btnChar6, btnChar7, btnChar8,
@@ -79,205 +91,205 @@ public class PersianKeypad extends LinearLayout {
         btnChar0.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('آ');
+                addChar(v, 'آ');
             }
         });
         btnChar1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ا');
+                addChar(v, 'ا');
             }
         });
         btnChar2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ب');
+                addChar(v, 'ب');
             }
         });
         btnChar3.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('پ');
+                addChar(v, 'پ');
             }
         });
         btnChar4.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ت');
+                addChar(v, 'ت');
             }
         });
         btnChar5.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ث');
+                addChar(v, 'ث');
             }
         });
         btnChar6.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ج');
+                addChar(v, 'ج');
             }
         });
         btnChar7.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('چ');
+                addChar(v, 'چ');
             }
         });
         btnChar8.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ح');
+                addChar(v, 'ح');
             }
         });
         btnChar9.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('خ');
+                addChar(v, 'خ');
             }
         });
         btnChar10.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('د');
+                addChar(v, 'د');
             }
         });
         btnChar11.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ذ');
+                addChar(v, 'ذ');
             }
         });
         btnChar12.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ر');
+                addChar(v, 'ر');
             }
         });
         btnChar13.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ز');
+                addChar(v, 'ز');
             }
         });
         btnChar14.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ژ');
+                addChar(v, 'ژ');
             }
         });
         btnChar15.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('س');
+                addChar(v, 'س');
             }
         });
         btnChar16.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ش');
+                addChar(v, 'ش');
             }
         });
         btnChar17.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ص');
+                addChar(v, 'ص');
             }
         });
         btnChar18.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ض');
+                addChar(v, 'ض');
             }
         });
         btnChar19.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ط');
+                addChar(v, 'ط');
             }
         });
         btnChar20.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ظ');
+                addChar(v, 'ظ');
             }
         });
         btnChar21.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ع');
+                addChar(v, 'ع');
             }
         });
         btnChar22.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('غ');
+                addChar(v, 'غ');
             }
         });
         btnChar23.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ف');
+                addChar(v, 'ف');
             }
         });
         btnChar24.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ق');
+                addChar(v, 'ق');
             }
         });
         btnChar25.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ک');
+                addChar(v, 'ک');
             }
         });
         btnChar26.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('گ');
+                addChar(v, 'گ');
             }
         });
         btnChar27.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ل');
+                addChar(v, 'ل');
             }
         });
         btnChar28.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('م');
+                addChar(v, 'م');
             }
         });
         btnChar29.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ن');
+                addChar(v, 'ن');
             }
         });
         btnChar30.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('و');
+                addChar(v, 'و');
             }
         });
         btnChar31.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ه');
+                addChar(v, 'ه');
             }
         });
         btnChar32.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar('ی');
+                addChar(v, 'ی');
             }
         });
         btnCharSpace.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(' ');
+                addChar(v, ' ');
             }
         });
         imbBackSpace.setOnClickListener(new OnClickListener() {
@@ -328,10 +340,41 @@ public class PersianKeypad extends LinearLayout {
         }
     }
 
-    private void addChar(char c) {
+    private void addChar(View v, char c) {
+        if (showCharPopup) {
+            showCharPopup(v, c);
+        }
+
         if (onKeypadEvent != null) {
             onKeypadEvent.onEnterChar(c);
         }
+    }
+
+    private void showCharPopup(final View v, char c) {
+        final PopupWindow popupWindow = new PopupWindow(getContext());
+        View popupView = View.inflate(getContext(), R.layout.popup_button_clicked, null);
+        TextView txtChar = popupView.findViewById(R.id.PBC_txtChar);
+        txtChar.setText(String.valueOf(c));
+        popupWindow.setContentView(popupView);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        popupWindow.showAsDropDown(v);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                int[] cordinate = new int[2];
+                v.getLocationInWindow(cordinate);
+                popupWindow.update((int) cordinate[0] + ((v.getWidth() - 96) / 2), (cordinate[1] - 72), 96, 96);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        popupWindow.dismiss();
+                    }
+                }, 500);
+            }
+        }, 10);
     }
 
     public void setBackSpaceButtonBackground(int src) {
@@ -345,5 +388,9 @@ public class PersianKeypad extends LinearLayout {
     public void setSubmitButtonVisibility(int visibility) {
         if (visibility == VISIBLE || visibility == INVISIBLE || visibility == GONE) {
         }
+    }
+
+    public void setShowCharPopup(boolean flag) {
+        showCharPopup = flag;
     }
 }

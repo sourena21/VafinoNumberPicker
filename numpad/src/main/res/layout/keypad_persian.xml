@@ -7,13 +7,258 @@
         android:id="@+id/KDP_llKeyBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
         android:layoutDirection="rtl"
         android:orientation="vertical"
         android:padding="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/KDP_btnChar6"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ج"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar8"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ح"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar9"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="خ"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar31"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ه"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar21"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ع"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar22"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="غ"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar23"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ف"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar24"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ق"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar5"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ث"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar17"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ص"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar18"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ض"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/KDP_btnChar26"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="گ"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar25"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ک"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar28"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="م"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar29"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ن"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar4"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ت"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar0"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="آ"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar1"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ا"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar27"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ل"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar2"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ب"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar32"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ی"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar15"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="س"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar16"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ش"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -21,406 +266,128 @@
                 android:id="@+id/KDP_imbBackSpace"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="@color/transparent"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_backspace" />
 
             <Button
-                android:id="@+id/KDP_btnChar6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ج"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
                 android:id="@+id/KDP_btnChar7"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/numpad_button_background_white"
                 android:text="چ"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
+                android:textSize="@dimen/text_large_size" />
 
             <Button
-                android:id="@+id/KDP_btnChar8"
+                android:id="@+id/KDP_btnChar30"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/numpad_button_background_white"
-                android:text="ح"
+                android:text="و"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar9"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="خ"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar31"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ه"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar23"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ف"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar24"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ق"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ث"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/KDP_btnChar26"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="گ"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar25"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ک"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ت"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar0"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="آ"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ا"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar27"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ل"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
+                android:textSize="@dimen/text_large_size" />
 
             <Button
                 android:id="@+id/KDP_btnChar3"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/numpad_button_background_white"
                 android:text="پ"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ب"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar32"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ی"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/KDP_btnChar12"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ر"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar13"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ز"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar14"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ژ"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar28"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="م"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar29"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ن"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar15"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="س"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar16"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ش"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
+                android:textSize="@dimen/text_large_size" />
 
             <Button
                 android:id="@+id/KDP_btnChar10"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/numpad_button_background_white"
                 android:text="د"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
+                android:textSize="@dimen/text_large_size" />
 
             <Button
                 android:id="@+id/KDP_btnChar11"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/numpad_button_background_white"
                 android:text="ذ"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar12"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ر"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar13"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ز"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar14"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ژ"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar19"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ط"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <Button
+                android:id="@+id/KDP_btnChar20"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/numpad_button_background_white"
+                android:text="ظ"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/KDP_btnCharSpace"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="2"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:background="@drawable/numpad_button_background_white"
+                android:paddingLeft="80dp"
+                android:paddingRight="80dp"
                 android:text="فاصله"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar30"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="و"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar21"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ع"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar22"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="غ"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar19"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ط"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar20"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ظ"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar18"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ض"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
-
-            <Button
-                android:id="@+id/KDP_btnChar17"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_white"
-                android:text="ص"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_normal_size" />
+                android:textSize="@dimen/text_large_size" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

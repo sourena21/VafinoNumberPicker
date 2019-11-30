@@ -16,5 +16,6 @@
         <attr name="inputHintColor" format="color" />
         <attr name="inputValue" format="string" />
         <attr name="inputTextSize" format="dimension" />
+        <attr name="showPersianCharPopup" format="boolean" />
     </declare-styleable>
 </resources>
