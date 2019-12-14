@@ -15,6 +15,7 @@ import hseify69.ir.numpad.helpers.Utils;
 
 public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
+    String submitButtonText = "تایید";
     String enteredNumber = "";
     String hintText = "";
     int maxLength = Integer.MAX_VALUE;
@@ -49,7 +50,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         initView(context, attrs);
     }
 
-    private void initView(Context context, @Nullable AttributeSet attrs) {
+    private void initView(Context context, AttributeSet attrs) {
         this.removeAllViews();
         v = View.inflate(context, R.layout.vafino_keyboard, null);
 
@@ -65,6 +66,10 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         String tempHint = ta.getString(R.styleable.VafinoKeyboard_inputHintText);
         if (tempHint != null && tempHint.length() > 0) {
             hintText = tempHint;
+        }
+        String submitText = ta.getString(R.styleable.VafinoKeyboard_setSubmitText);
+        if (submitText != null && submitText.length() > 0) {
+            submitButtonText = submitText;
         }
         String tempValue = ta.getString(R.styleable.VafinoKeyboard_inputValue);
         if (tempValue != null && tempValue.length() > 0) {
@@ -113,6 +118,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         PersianKeypad persianKeypad = new PersianKeypad(context);
         persianKeypad.setOnKeypadEvent(this);
         persianKeypad.setShowCharPopup(showCharPopup);
+        persianKeypad.setSubmitButtonText(submitButtonText);
         llKeypadBox.removeAllViews();
         llKeypadBox.addView(persianKeypad);
     }
@@ -121,6 +127,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         DecimalKeypad decimalKeypad = new DecimalKeypad(context);
         decimalKeypad.setOnKeypadEvent(this);
         decimalKeypad.setShowSubmitButton(showSubmitButton);
+        decimalKeypad.setSubmitButtonText(submitButtonText);
         llKeypadBox.removeAllViews();
         llKeypadBox.addView(decimalKeypad);
     }

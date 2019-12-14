@@ -15,6 +15,7 @@ public class DecimalKeypad extends LinearLayout implements View.OnClickListener 
 
     boolean showSubmitButton = false;
     OnKeypadEvent onKeypadEvent;
+    private String submitButtonText = "تایید";
 
     LinearLayout llNumBox;
     Button btnNumber0, btnNumber1, btnNumber2, btnNumber3, btnNumber4, btnNumber5, btnNumber6,
@@ -169,5 +170,14 @@ public class DecimalKeypad extends LinearLayout implements View.OnClickListener 
         } else {
             btnSubmit.setVisibility(INVISIBLE);
         }
+    }
+
+    public void setSubmitButtonText(String text) {
+        submitButtonText = text;
+        btnSubmit.setText(submitButtonText);
+    }
+
+    public String getSubmitButtonText() {
+        return submitButtonText;
     }
 }

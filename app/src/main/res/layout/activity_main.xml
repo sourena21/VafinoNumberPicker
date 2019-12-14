@@ -47,5 +47,7 @@
         app:inputHintText="ورودی"
         app:inputType="number_decimal"
         app:maxLeangth="10"
-        app:showPersianCharPopup="true" />
+        app:setSubmitText="تایید خرید"
+        app:showPersianCharPopup="true"
+        app:showSubmitButton="true" />
 </RelativeLayout>

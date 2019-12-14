@@ -2,6 +2,7 @@ package hseify69.ir.numpad.keyboards;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -23,6 +24,7 @@ import hseify69.ir.numpad.R;
 
 public class PersianKeypad extends LinearLayout {
 
+    String submitButtonText = "تایید";
     boolean showCharPopup = false;
     boolean showSubmitButton = false;
     OnKeypadEvent onKeypadEvent;
@@ -357,7 +359,7 @@ public class PersianKeypad extends LinearLayout {
         TextView txtChar = popupView.findViewById(R.id.PBC_txtChar);
         txtChar.setText(String.valueOf(c));
         popupWindow.setContentView(popupView);
-        popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         popupWindow.showAsDropDown(v);
 
         new Handler().postDelayed(new Runnable() {
@@ -401,5 +403,13 @@ public class PersianKeypad extends LinearLayout {
 
     public void setShowSubmitButton(boolean flag) {
         this.showSubmitButton = flag;
+    }
+
+    public void setSubmitButtonText(String text) {
+        submitButtonText = text;
+    }
+
+    public String getSubmitButtonText() {
+        return submitButtonText;
     }
 }
