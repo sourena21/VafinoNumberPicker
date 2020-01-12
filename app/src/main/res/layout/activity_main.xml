@@ -45,9 +45,10 @@
         android:layout_alignParentBottom="true"
         app:displayVisibility="visible"
         app:inputHintText="ورودی"
-        app:inputType="number_decimal"
+        app:inputType="persian"
         app:maxLeangth="10"
+        app:textSize="40sp"
         app:setSubmitText="تایید خرید"
         app:showPersianCharPopup="true"
-        app:showSubmitButton="true" />
+        app:showSubmitButton="true"/>
 </RelativeLayout>

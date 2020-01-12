@@ -2,6 +2,7 @@ package hseify69.ir.numpad.keyboards;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.icu.util.MeasureUnit;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
@@ -25,6 +26,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     int displayVisibility = 0;
     boolean showCharPopup = false;
     boolean showSubmitButton = false;
+    float textSize;
 
     OnMobileDetected onMobileDetected;
     OnNumberEnter onNumberEnter;
@@ -76,6 +78,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
             enteredNumber = tempValue;
         }
         textColor = ta.getColor(R.styleable.VafinoKeyboard_inputTextColor, context.getResources().getColor(R.color.colorBlack));
+        textSize = ta.getDimension(R.styleable.VafinoKeyboard_textSize, context.getResources().getDimension(R.dimen.text_small_size));
         hintColor = ta.getColor(R.styleable.VafinoKeyboard_inputHintColor, context.getResources().getColor(R.color.colorGrayDark));
         showCharPopup = ta.getBoolean(R.styleable.VafinoKeyboard_showPersianCharPopup, false);
         showSubmitButton = ta.getBoolean(R.styleable.VafinoKeyboard_showSubmitButton, false);
@@ -84,6 +87,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         txtEnteredNumber.setText(enteredNumber);
         txtEnteredNumber.setTextColor(textColor);
         txtEnteredNumber.setHintTextColor(hintColor);
+        txtEnteredNumber.setTextSize(textSize);
 
         switch (displayVisibility) {
             case VISIBLE:
@@ -119,6 +123,8 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         persianKeypad.setOnKeypadEvent(this);
         persianKeypad.setShowCharPopup(showCharPopup);
         persianKeypad.setSubmitButtonText(submitButtonText);
+        persianKeypad.setTextColor(textColor);
+        persianKeypad.setAllTextSize(textSize);
         llKeypadBox.removeAllViews();
         llKeypadBox.addView(persianKeypad);
     }
@@ -128,6 +134,8 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         decimalKeypad.setOnKeypadEvent(this);
         decimalKeypad.setShowSubmitButton(showSubmitButton);
         decimalKeypad.setSubmitButtonText(submitButtonText);
+        decimalKeypad.setTextColor(textColor);
+        decimalKeypad.setAllTextSize(textSize);
         llKeypadBox.removeAllViews();
         llKeypadBox.addView(decimalKeypad);
     }

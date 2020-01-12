@@ -13,6 +13,7 @@ import hseify69.ir.numpad.R;
 
 public class DecimalKeypad extends LinearLayout implements View.OnClickListener {
 
+    float allTextSize;
     boolean showSubmitButton = false;
     OnKeypadEvent onKeypadEvent;
     private String submitButtonText = "تایید";
@@ -21,6 +22,7 @@ public class DecimalKeypad extends LinearLayout implements View.OnClickListener 
     Button btnNumber0, btnNumber1, btnNumber2, btnNumber3, btnNumber4, btnNumber5, btnNumber6,
             btnNumber7, btnNumber8, btnNumber9, btnSubmit;
     ImageButton imbBackSpace;
+    private int textColor;
 
     public DecimalKeypad(Context context) {
         super(context);
@@ -67,6 +69,18 @@ public class DecimalKeypad extends LinearLayout implements View.OnClickListener 
         btnNumber9.setOnClickListener(this);
         imbBackSpace.setOnClickListener(this);
         btnSubmit.setOnClickListener(this);
+
+        btnNumber0.setTextSize(allTextSize);
+        btnNumber1.setTextSize(allTextSize);
+        btnNumber2.setTextSize(allTextSize);
+        btnNumber3.setTextSize(allTextSize);
+        btnNumber4.setTextSize(allTextSize);
+        btnNumber5.setTextSize(allTextSize);
+        btnNumber6.setTextSize(allTextSize);
+        btnNumber7.setTextSize(allTextSize);
+        btnNumber8.setTextSize(allTextSize);
+        btnNumber9.setTextSize(allTextSize);
+        btnSubmit.setTextSize(allTextSize);
 
         imbBackSpace.setOnTouchListener(new OnTouchListener() {
 
@@ -179,5 +193,21 @@ public class DecimalKeypad extends LinearLayout implements View.OnClickListener 
 
     public String getSubmitButtonText() {
         return submitButtonText;
+    }
+
+    public void setAllTextSize(float allTextSize) {
+        this.allTextSize = allTextSize;
+    }
+
+    public float getAllTextSize() {
+        return allTextSize;
+    }
+
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
+    }
+
+    public int getTextColor() {
+        return textColor;
     }
 }

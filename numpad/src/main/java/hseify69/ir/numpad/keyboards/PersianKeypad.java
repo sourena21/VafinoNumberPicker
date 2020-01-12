@@ -24,6 +24,7 @@ import hseify69.ir.numpad.R;
 
 public class PersianKeypad extends LinearLayout {
 
+    float allTextSize;
     String submitButtonText = "تایید";
     boolean showCharPopup = false;
     boolean showSubmitButton = false;
@@ -35,6 +36,7 @@ public class PersianKeypad extends LinearLayout {
             btnChar25, btnChar26, btnChar27, btnChar28, btnChar29, btnChar30, btnChar31, btnChar32,
             btnCharSpace;
     ImageButton imbBackSpace;
+    private int textColor;
 
     public PersianKeypad(Context context) {
         super(context);
@@ -302,6 +304,9 @@ public class PersianKeypad extends LinearLayout {
             }
         });
 
+        setTextSizes(allTextSize);
+        setTextColors(textColor);
+
         imbBackSpace.setOnTouchListener(new OnTouchListener() {
 
             long pressAmount = 0;
@@ -323,6 +328,80 @@ public class PersianKeypad extends LinearLayout {
         });
 
         this.addView(v);
+    }
+
+    private void setTextSizes(float allTextSize) {
+        btnChar0.setTextSize(allTextSize);
+        btnChar1.setTextSize(allTextSize);
+        btnChar2.setTextSize(allTextSize);
+        btnChar3.setTextSize(allTextSize);
+        btnChar4.setTextSize(allTextSize);
+        btnChar5.setTextSize(allTextSize);
+        btnChar6.setTextSize(allTextSize);
+        btnChar7.setTextSize(allTextSize);
+        btnChar8.setTextSize(allTextSize);
+        btnChar9.setTextSize(allTextSize);
+        btnChar10.setTextSize(allTextSize);
+        btnChar11.setTextSize(allTextSize);
+        btnChar12.setTextSize(allTextSize);
+        btnChar13.setTextSize(allTextSize);
+        btnChar14.setTextSize(allTextSize);
+        btnChar15.setTextSize(allTextSize);
+        btnChar16.setTextSize(allTextSize);
+        btnChar17.setTextSize(allTextSize);
+        btnChar18.setTextSize(allTextSize);
+        btnChar19.setTextSize(allTextSize);
+        btnChar20.setTextSize(allTextSize);
+        btnChar21.setTextSize(allTextSize);
+        btnChar22.setTextSize(allTextSize);
+        btnChar23.setTextSize(allTextSize);
+        btnChar24.setTextSize(allTextSize);
+        btnChar25.setTextSize(allTextSize);
+        btnChar26.setTextSize(allTextSize);
+        btnChar27.setTextSize(allTextSize);
+        btnChar28.setTextSize(allTextSize);
+        btnChar29.setTextSize(allTextSize);
+        btnChar30.setTextSize(allTextSize);
+        btnChar31.setTextSize(allTextSize);
+        btnChar32.setTextSize(allTextSize);
+        btnCharSpace.setTextSize(allTextSize);
+    }
+
+    private void setTextColors(int textColor) {
+        btnChar0.setTextColor(textColor);
+        btnChar1.setTextColor(textColor);
+        btnChar2.setTextColor(textColor);
+        btnChar3.setTextColor(textColor);
+        btnChar4.setTextColor(textColor);
+        btnChar5.setTextColor(textColor);
+        btnChar6.setTextColor(textColor);
+        btnChar7.setTextColor(textColor);
+        btnChar8.setTextColor(textColor);
+        btnChar9.setTextColor(textColor);
+        btnChar10.setTextColor(textColor);
+        btnChar11.setTextColor(textColor);
+        btnChar12.setTextColor(textColor);
+        btnChar13.setTextColor(textColor);
+        btnChar14.setTextColor(textColor);
+        btnChar15.setTextColor(textColor);
+        btnChar16.setTextColor(textColor);
+        btnChar17.setTextColor(textColor);
+        btnChar18.setTextColor(textColor);
+        btnChar19.setTextColor(textColor);
+        btnChar20.setTextColor(textColor);
+        btnChar21.setTextColor(textColor);
+        btnChar22.setTextColor(textColor);
+        btnChar23.setTextColor(textColor);
+        btnChar24.setTextColor(textColor);
+        btnChar25.setTextColor(textColor);
+        btnChar26.setTextColor(textColor);
+        btnChar27.setTextColor(textColor);
+        btnChar28.setTextColor(textColor);
+        btnChar29.setTextColor(textColor);
+        btnChar30.setTextColor(textColor);
+        btnChar31.setTextColor(textColor);
+        btnChar32.setTextColor(textColor);
+        btnCharSpace.setTextColor(textColor);
     }
 
     private void cleanAction() {
@@ -411,5 +490,23 @@ public class PersianKeypad extends LinearLayout {
 
     public String getSubmitButtonText() {
         return submitButtonText;
+    }
+
+    public void setAllTextSize(float allTextSize) {
+        this.allTextSize = allTextSize;
+        setTextSizes(allTextSize);
+    }
+
+    public float getAllTextSize() {
+        return allTextSize;
+    }
+
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
+        setTextColors(textColor);
+    }
+
+    public int getTextColor() {
+        return textColor;
     }
 }
