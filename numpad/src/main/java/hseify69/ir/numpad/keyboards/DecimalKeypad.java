@@ -70,17 +70,8 @@ public class DecimalKeypad extends LinearLayout implements View.OnClickListener 
         imbBackSpace.setOnClickListener(this);
         btnSubmit.setOnClickListener(this);
 
-        btnNumber0.setTextSize(allTextSize);
-        btnNumber1.setTextSize(allTextSize);
-        btnNumber2.setTextSize(allTextSize);
-        btnNumber3.setTextSize(allTextSize);
-        btnNumber4.setTextSize(allTextSize);
-        btnNumber5.setTextSize(allTextSize);
-        btnNumber6.setTextSize(allTextSize);
-        btnNumber7.setTextSize(allTextSize);
-        btnNumber8.setTextSize(allTextSize);
-        btnNumber9.setTextSize(allTextSize);
-        btnSubmit.setTextSize(allTextSize);
+        setTextSizes(allTextSize);
+        setTextColor(textColor);
 
         imbBackSpace.setOnTouchListener(new OnTouchListener() {
 
@@ -103,6 +94,34 @@ public class DecimalKeypad extends LinearLayout implements View.OnClickListener 
         });
 
         this.addView(v);
+    }
+
+    private void setTextColors() {
+        btnNumber0.setTextColor(textColor);
+        btnNumber1.setTextColor(textColor);
+        btnNumber2.setTextColor(textColor);
+        btnNumber3.setTextColor(textColor);
+        btnNumber4.setTextColor(textColor);
+        btnNumber5.setTextColor(textColor);
+        btnNumber6.setTextColor(textColor);
+        btnNumber7.setTextColor(textColor);
+        btnNumber8.setTextColor(textColor);
+        btnNumber9.setTextColor(textColor);
+        btnSubmit.setTextColor(textColor);
+    }
+
+    private void setTextSizes(float allTextSize) {
+        btnNumber0.setTextSize(allTextSize);
+        btnNumber1.setTextSize(allTextSize);
+        btnNumber2.setTextSize(allTextSize);
+        btnNumber3.setTextSize(allTextSize);
+        btnNumber4.setTextSize(allTextSize);
+        btnNumber5.setTextSize(allTextSize);
+        btnNumber6.setTextSize(allTextSize);
+        btnNumber7.setTextSize(allTextSize);
+        btnNumber8.setTextSize(allTextSize);
+        btnNumber9.setTextSize(allTextSize);
+        btnSubmit.setTextSize(allTextSize);
     }
 
     @Override
@@ -197,6 +216,7 @@ public class DecimalKeypad extends LinearLayout implements View.OnClickListener 
 
     public void setAllTextSize(float allTextSize) {
         this.allTextSize = allTextSize;
+        setTextSizes(allTextSize);
     }
 
     public float getAllTextSize() {
@@ -205,6 +225,7 @@ public class DecimalKeypad extends LinearLayout implements View.OnClickListener 
 
     public void setTextColor(int textColor) {
         this.textColor = textColor;
+        setTextColors();
     }
 
     public int getTextColor() {

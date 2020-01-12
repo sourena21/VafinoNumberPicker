@@ -45,9 +45,9 @@
         android:layout_alignParentBottom="true"
         app:displayVisibility="visible"
         app:inputHintText="ورودی"
-        app:inputType="persian"
+        app:inputType="number_decimal"
         app:maxLeangth="10"
-        app:textSize="40sp"
+        app:textSize="@dimen/text_extra_small_size"
         app:setSubmitText="تایید خرید"
         app:showPersianCharPopup="true"
         app:showSubmitButton="true"/>
