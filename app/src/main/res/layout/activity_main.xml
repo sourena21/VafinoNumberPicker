@@ -47,8 +47,16 @@
         app:inputHintText="ورودی"
         app:inputType="number_decimal"
         app:maxLeangth="10"
-        app:textSize="@dimen/text_extra_small_size"
         app:setSubmitText="تایید خرید"
         app:showPersianCharPopup="true"
-        app:showSubmitButton="true"/>
+        app:showSubmitButton="true"
+        app:textSize="@dimen/text_extra_small_size" />
+
+    <hseify69.ir.numpad.numberPicker.NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:minValue="-10"
+        app:maxValue="10"
+        app:value="3"
+        app:showLimitMessage="true" />
 </RelativeLayout>

@@ -1,12 +1,14 @@
 package hseify69.ir.numpad.numberPicker;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -17,30 +19,32 @@ import hseify69.ir.numpad.helpers.Consts;
 
 public class NumberPicker extends LinearLayout {
 
+    boolean showLimitMessage = false;
+    DecimalFormat formatter;
+    int value = Consts.initValue;
+    int minValue = Consts.initMinValue;
+    int maxValue = Consts.initMaxValue;
+    OnChangeValue onChangeValue;
+
     ImageButton imbIncrease, imbDecrease;
     TextView txtCount;
-    DecimalFormat formatter;
-    long value = Consts.initValue;
-    long minValue = Consts.initMinValue;
-    long maxValue = Consts.initMaxValue;
-    OnChangeValue onChangeValue;
 
     public NumberPicker(Context context) {
         super(context);
-        initView(context);
+        initView(context, null);
     }
 
     public NumberPicker(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        initView(context);
+        initView(context, attrs);
     }
 
     public NumberPicker(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView(context);
+        initView(context, attrs);
     }
 
-    private void initView(final Context context) {
+    private void initView(final Context context, AttributeSet attrs) {
         View v = View.inflate(context, R.layout.number_picker_layout, null);
 
         imbDecrease = v.findViewById(R.id.imbDecrease);
@@ -48,6 +52,13 @@ public class NumberPicker extends LinearLayout {
         txtCount = v.findViewById(R.id.txtCount);
 
         formatter = new DecimalFormat("#,###");
+
+        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.NumberPicker);
+
+        showLimitMessage = ta.getBoolean(R.styleable.NumberPicker_showLimitMessage, false);
+        setValue(ta.getInteger(R.styleable.NumberPicker_value, Consts.initValue));
+        setMaxValue(ta.getInteger(R.styleable.NumberPicker_maxValue, Consts.initMaxValue));
+        setMinValue(ta.getInteger(R.styleable.NumberPicker_minValue, Consts.initMinValue));
 
         txtCount.setText(formatter.format(value));
 
@@ -74,6 +85,8 @@ public class NumberPicker extends LinearLayout {
                     if (onChangeValue != null) {
                         onChangeValue.onIncrease(value);
                     }
+                } else {
+                    Toast.makeText(context, "موجودی کافی نیست!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -81,22 +94,22 @@ public class NumberPicker extends LinearLayout {
         this.addView(v);
     }
 
-    public long getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(long val) {
+    public void setValue(int val) {
         if (val <= maxValue && val >= minValue) {
             value = val;
             txtCount.setText(formatter.format(value));
         }
     }
 
-    public long getMinValue() {
+    public int getMinValue() {
         return minValue;
     }
 
-    public void setMinValue(long min) {
+    public void setMinValue(int min) {
         if (min < maxValue) {
             this.minValue = min;
         }
@@ -106,11 +119,11 @@ public class NumberPicker extends LinearLayout {
         }
     }
 
-    public long getMaxValue() {
+    public int getMaxValue() {
         return maxValue;
     }
 
-    public void setMaxValue(long max) {
+    public void setMaxValue(int max) {
         if (max > minValue) {
             this.maxValue = max;
         }
@@ -121,9 +134,9 @@ public class NumberPicker extends LinearLayout {
     }
 
     public interface OnChangeValue {
-        void onIncrease(long newValue);
+        void onIncrease(int newValue);
 
-        void onDecrease(long newValue);
+        void onDecrease(int newValue);
     }
 
     public void setOnChangeValue(OnChangeValue listener) {

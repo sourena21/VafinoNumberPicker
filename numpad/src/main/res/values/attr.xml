@@ -21,4 +21,11 @@
         <attr name="showSubmitButton" format="boolean" />
         <attr name="setSubmitText" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="NumberPicker">
+        <attr name="showLimitMessage" format="boolean" />
+        <attr name="maxValue" format="integer" />
+        <attr name="minValue" format="integer" />
+        <attr name="value" format="integer" />
+    </declare-styleable>
 </resources>
