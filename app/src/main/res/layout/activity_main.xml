@@ -43,20 +43,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:visibility="gone"
         app:displayVisibility="visible"
         app:inputHintText="ورودی"
-        app:inputType="number_decimal"
+        app:inputType="persian"
         app:maxLeangth="10"
         app:setSubmitText="تایید خرید"
         app:showPersianCharPopup="true"
         app:showSubmitButton="true"
-        app:textSize="@dimen/text_extra_small_size" />
+        app:textSize="@dimen/text_normal_size" />
 
     <hseify69.ir.numpad.numberPicker.NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:minValue="-10"
-        app:maxValue="10"
-        app:value="3"
-        app:showLimitMessage="true" />
+        android:visibility="gone" />
+
+    <hseify69.ir.numpad.datePicker.NumberPersianDatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:day="22"
+        app:maxYear="1359"
+        app:minYear="1350"
+        app:month="11"
+        app:year="1357" />
 </RelativeLayout>
