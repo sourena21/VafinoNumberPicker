@@ -60,9 +60,9 @@ public class NumberPersianDatePicker extends LinearLayout {
 
         maxYear = ta.getInteger(R.styleable.NumberPersianDatePicker_maxYear, Consts.maxYear);
         minYear = ta.getInteger(R.styleable.NumberPersianDatePicker_minYear, Consts.minYear);
-        year = ta.getInteger(R.styleable.NumberPersianDatePicker_year, Consts.minYear);
-        month = ta.getInteger(R.styleable.NumberPersianDatePicker_month, Consts.minMonth);
-        day = ta.getInteger(R.styleable.NumberPersianDatePicker_day, Consts.minDay);
+        year = ta.getInteger(R.styleable.NumberPersianDatePicker_year, persianDate.getShYear());
+        month = ta.getInteger(R.styleable.NumberPersianDatePicker_month, persianDate.getShMonth());
+        day = ta.getInteger(R.styleable.NumberPersianDatePicker_day, persianDate.getShDay());
 
         npcYear.setMinValue(minYear);
         npcYear.setMaxValue(maxYear);

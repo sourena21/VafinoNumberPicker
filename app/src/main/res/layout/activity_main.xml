@@ -62,9 +62,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        app:day="22"
-        app:maxYear="1359"
-        app:minYear="1350"
-        app:month="11"
-        app:year="1357" />
+        app:maxYear="1399"
+        app:minYear="1290" />
 </RelativeLayout>
