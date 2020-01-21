@@ -237,4 +237,14 @@ public class NumberPersianDatePicker extends LinearLayout {
             setDayRange(npcYear.getValue(), npcMonth.getValue());
         }
     }
+
+    public String getSelectedDate() {
+        return npcYear.getValue() + "/" + npcMonth.getValue() + "/" + npcDay.getValue();
+    }
+
+    public void setSelectedDate(int y, int m, int d) {
+        setYear(y);
+        setMonth(m);
+        setDay(d);
+    }
 }

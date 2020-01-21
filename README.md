@@ -28,12 +28,18 @@ Add the dependency
 ```
 
 # Views
-There are two view and below you can:
+There are some views and below you can watch theme:
 
 ### Numpad
 
 It is a custom numpad to use fixed in view
 
+
 ### NumberPicker
 
 It is a simple numberpicker to use increase and decrease value listener separately and developed because others do not support this feature.
+
+
+### NumberPersianDatePicker
+
+It is a simple datepicker to choose a jalali date by scrolling
