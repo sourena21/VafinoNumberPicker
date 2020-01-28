@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import hseify69.ir.numpad.R;
 import hseify69.ir.numpad.helpers.Consts;
+import hseify69.ir.numpad.helpers.Utils;
 import saman.zamani.persiandate.PersianDate;
 
 public class NumberPersianDatePicker extends LinearLayout {
@@ -71,21 +72,21 @@ public class NumberPersianDatePicker extends LinearLayout {
         npcMonth.setMaxValue(maxMonth);
         npcMonth.setValue(month);
         npcDay.setMinValue(minDay);
-        setDayRange(npcYear.getValue(), npcMonth.getValue());
+        npcDay.setMaxValue(Utils.getDayRange(npcYear.getValue(), npcMonth.getValue()));
         npcDay.setValue(day);
 
         npcYear.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 persianDate.setShYear(newVal);
-                setDayRange(newVal, npcMonth.getValue());
+                npcDay.setValue(Utils.getDayRange(newVal, npcMonth.getValue()));
             }
         });
         npcMonth.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 persianDate.setShMonth(newVal);
-                setDayRange(npcYear.getValue(), newVal);
+                npcDay.setValue(Utils.getDayRange(npcYear.getValue(), newVal));
             }
         });
         npcDay.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -96,20 +97,6 @@ public class NumberPersianDatePicker extends LinearLayout {
         });
 
         this.addView(v);
-    }
-
-    private void setDayRange(int yearVal, int monthVal) {
-        if (monthVal >= 1 && monthVal <= 6) {
-            npcDay.setMaxValue(31);
-        } else if (monthVal >= 7 && monthVal <= 11) {
-            npcDay.setMaxValue(30);
-        } else if (monthVal == 12) {
-            if (persianDate.isLeap(yearVal)) {
-                npcDay.setMaxValue(30);
-            } else {
-                npcDay.setMaxValue(29);
-            }
-        }
     }
 
     public int getMaxYear() {
@@ -210,7 +197,7 @@ public class NumberPersianDatePicker extends LinearLayout {
         if (y <= maxYear && y >= minYear) {
             year = y;
             npcYear.setValue(y);
-            setDayRange(npcYear.getValue(), npcMonth.getValue());
+            npcDay.setValue(Utils.getDayRange(npcYear.getValue(), npcMonth.getValue()));
         }
     }
 
@@ -222,7 +209,7 @@ public class NumberPersianDatePicker extends LinearLayout {
         if (m <= maxMonth && m >= minMonth) {
             month = m;
             npcMonth.setValue(m);
-            setDayRange(npcYear.getValue(), npcMonth.getValue());
+            npcDay.setValue(Utils.getDayRange(npcYear.getValue(), npcMonth.getValue()));
         }
     }
 
@@ -234,7 +221,7 @@ public class NumberPersianDatePicker extends LinearLayout {
         if (d <= maxDay && d >= minDay) {
             day = d;
             npcDay.setValue(d);
-            setDayRange(npcYear.getValue(), npcMonth.getValue());
+            npcDay.setValue(Utils.getDayRange(npcYear.getValue(), npcMonth.getValue()));
         }
     }
 

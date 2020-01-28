@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/KPDP_edtDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:digits="1234567890"
+                android:gravity="center"
+                android:hint="روز"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:maxLength="2"
+                android:minWidth="48dp"
+                android:padding="16dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray"
+                android:textSize="@dimen/text_extra_large_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="/"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_extra_large_size" />
+
+            <TextView
+                android:id="@+id/KPDP_edtMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:digits="1234567890"
+                android:gravity="center"
+                android:hint="ماه"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="2"
+                android:minWidth="48dp"
+                android:padding="16dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray"
+                android:textSize="@dimen/text_extra_large_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="/"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_extra_large_size" />
+
+            <TextView
+                android:id="@+id/KPDP_edtYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:digits="1234567890"
+                android:gravity="center"
+                android:hint="سال"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="4"
+                android:minWidth="96dp"
+                android:padding="16dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray"
+                android:textSize="@dimen/text_extra_large_size" />
+        </LinearLayout>
+
+        <hseify69.ir.numpad.keyboards.VafinoKeyboard
+            android:id="@+id/KPDP_dateInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:displayVisibility="gone"
+            app:inputType="number_decimal"
+            app:showSubmitButton="false" />
+    </LinearLayout>
+</RelativeLayout>

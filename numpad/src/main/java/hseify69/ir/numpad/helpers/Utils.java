@@ -1,5 +1,7 @@
 package hseify69.ir.numpad.helpers;
 
+import saman.zamani.persiandate.PersianDate;
+
 public class Utils {
 
     public static String getStandardMobileFormat(String cell) {
@@ -47,5 +49,21 @@ public class Utils {
             return false;
         }
 
+    }
+
+    public static int getDayRange(int yearVal, int monthVal) {
+        if (monthVal >= 1 && monthVal <= 6) {
+            return 31;
+        } else if (monthVal >= 7 && monthVal <= 11) {
+            return 30;
+        } else if (monthVal == 12) {
+            if (PersianDate.isJalaliLeap(yearVal)) {
+                return 30;
+            } else {
+                return 29;
+            }
+        } else {
+            return 31;
+        }
     }
 }

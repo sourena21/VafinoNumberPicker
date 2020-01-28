@@ -29,11 +29,25 @@
         <attr name="value" format="integer" />
     </declare-styleable>
 
+    <attr name="maxYear" format="integer" />
+    <attr name="minYear" format="integer" />
+    <attr name="year" format="integer" />
+    <attr name="month" format="integer" />
+    <attr name="day" format="integer" />
+
     <declare-styleable name="NumberPersianDatePicker">
-        <attr name="maxYear" format="integer" />
-        <attr name="minYear" format="integer" />
-        <attr name="year" format="integer" />
-        <attr name="month" format="integer" />
-        <attr name="day" format="integer" />
+        <attr name="maxYear" />
+        <attr name="minYear" />
+        <attr name="year" />
+        <attr name="month" />
+        <attr name="day" />
+    </declare-styleable>
+
+    <declare-styleable name="KeyboardPersianDatePicker">
+        <attr name="maxYear" />
+        <attr name="minYear" />
+        <attr name="year" />
+        <attr name="month" />
+        <attr name="day" />
     </declare-styleable>
 </resources>

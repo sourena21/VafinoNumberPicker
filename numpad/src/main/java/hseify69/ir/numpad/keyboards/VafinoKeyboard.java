@@ -32,6 +32,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     OnNumberEnter onNumberEnter;
     OnChangeEntered onChangeEntered;
     OnSubmitEntered onSubmitEntered;
+    OnBackspace onBackspace;
 
     View v;
     LinearLayout llKeyboardBox, llKeypadBox;
@@ -146,6 +147,9 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     }
 
     private void backSpaceLast() {
+        if (onBackspace != null) {
+            onBackspace.onBackspace();
+        }
         if (enteredNumber.length() > 0) {
             enteredNumber = enteredNumber.substring(0, enteredNumber.length() - 1);
             if (enteredNumber.length() > 0) {
@@ -216,6 +220,10 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         void onSubmit(String wholeEntered);
     }
 
+    public interface OnBackspace {
+        void onBackspace();
+    }
+
     public void setOnSubmitEntered(OnSubmitEntered listener) {
         onSubmitEntered = listener;
     }
@@ -235,6 +243,10 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
     public void setOnNumberEnter(OnNumberEnter listener) {
         onNumberEnter = listener;
+    }
+
+    public void setOnBackspace(OnBackspace listener) {
+        onBackspace = listener;
     }
 
     public void setInputDisplayVisibility(int visibility) {

@@ -5,63 +5,11 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/txtName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:background="@drawable/border_bottom_black"
-            android:hint="نام"
-            android:padding="8dp"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/text_normal_size" />
-
-        <TextView
-            android:id="@+id/txtFamily"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:background="@drawable/border_bottom_black"
-            android:hint="نام خانوادگی"
-            android:padding="8dp"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/text_normal_size" />
-    </LinearLayout>
-
-    <hseify69.ir.numpad.keyboards.VafinoKeyboard
-        android:id="@+id/keyboard"
-        android:layout_width="match_parent"
+    <hseify69.ir.numpad.datePicker.KeyboardPersianDatePicker
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:visibility="gone"
-        app:displayVisibility="visible"
-        app:inputHintText="ورودی"
-        app:inputType="persian"
-        app:maxLeangth="10"
-        app:setSubmitText="تایید خرید"
-        app:showPersianCharPopup="true"
-        app:showSubmitButton="true"
-        app:textSize="@dimen/text_normal_size" />
-
-    <hseify69.ir.numpad.numberPicker.NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
-    <hseify69.ir.numpad.datePicker.NumberPersianDatePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        app:maxYear="1399"
-        app:minYear="1290" />
+        app:day="12"
+        app:month="6"
+        app:year="1369" />
 </RelativeLayout>
