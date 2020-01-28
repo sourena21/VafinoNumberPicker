@@ -146,6 +146,29 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
             public void afterTextChanged(Editable s) {
             }
         });
+        txtYear.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    try {
+                        year = Integer.parseInt(String.valueOf(txtYear.getText()));
+                        if (txtYear.getText().length() == 4) {
+                            maxDay = Utils.getDayRange(year, month);
+                            setDayAmount();
+                            if (year > maxYear) {
+                                txtYear.setText(String.valueOf(maxYear));
+                            } else if (year < minYear) {
+                                txtYear.setText(String.valueOf(minYear));
+                            }
+                        } else if (txtYear.getText().length() == 0) {
+                            switchToInput(txtMonth);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
         txtYear.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -253,7 +276,7 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
     }
 
     public void setYear(int y) {
-        if (y <= maxYear && y >= minYear) {
+        if (y > 0 && y <= maxYear && y >= minYear) {
             year = y;
             txtYear.setText(String.valueOf(y));
             maxDay = Utils.getDayRange(year, month);
@@ -287,6 +310,13 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
     }
 
     public String getSelectedDate() {
+        try {
+//            int y=txt
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
         return year + "/" + month + "/" + day;
     }
 

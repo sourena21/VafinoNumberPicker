@@ -79,14 +79,14 @@ public class NumberPersianDatePicker extends LinearLayout {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 persianDate.setShYear(newVal);
-                npcDay.setValue(Utils.getDayRange(newVal, npcMonth.getValue()));
+                npcDay.setMaxValue(Utils.getDayRange(newVal, npcMonth.getValue()));
             }
         });
         npcMonth.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 persianDate.setShMonth(newVal);
-                npcDay.setValue(Utils.getDayRange(npcYear.getValue(), newVal));
+                npcDay.setMaxValue(Utils.getDayRange(npcYear.getValue(), newVal));
             }
         });
         npcDay.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -197,7 +197,7 @@ public class NumberPersianDatePicker extends LinearLayout {
         if (y <= maxYear && y >= minYear) {
             year = y;
             npcYear.setValue(y);
-            npcDay.setValue(Utils.getDayRange(npcYear.getValue(), npcMonth.getValue()));
+            npcDay.setMaxValue(Utils.getDayRange(npcYear.getValue(), npcMonth.getValue()));
         }
     }
 
@@ -209,7 +209,7 @@ public class NumberPersianDatePicker extends LinearLayout {
         if (m <= maxMonth && m >= minMonth) {
             month = m;
             npcMonth.setValue(m);
-            npcDay.setValue(Utils.getDayRange(npcYear.getValue(), npcMonth.getValue()));
+            npcDay.setMaxValue(Utils.getDayRange(npcYear.getValue(), npcMonth.getValue()));
         }
     }
 
@@ -221,7 +221,7 @@ public class NumberPersianDatePicker extends LinearLayout {
         if (d <= maxDay && d >= minDay) {
             day = d;
             npcDay.setValue(d);
-            npcDay.setValue(Utils.getDayRange(npcYear.getValue(), npcMonth.getValue()));
+            npcDay.setMaxValue(Utils.getDayRange(npcYear.getValue(), npcMonth.getValue()));
         }
     }
 
