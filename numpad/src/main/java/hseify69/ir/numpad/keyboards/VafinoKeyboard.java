@@ -119,7 +119,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         this.addView(v);
     }
 
-    private void initKeyboardByPersian(Context context) {
+    public void initKeyboardByPersian(Context context) {
         PersianKeypad persianKeypad = new PersianKeypad(context);
         persianKeypad.setOnKeypadEvent(this);
         persianKeypad.setShowCharPopup(showCharPopup);
@@ -127,10 +127,11 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         persianKeypad.setTextColor(textColor);
         persianKeypad.setAllTextSize(textSize);
         llKeypadBox.removeAllViews();
+        cleanView();
         llKeypadBox.addView(persianKeypad);
     }
 
-    private void initKeyboardByDecimal(Context context) {
+    public void initKeyboardByDecimal(Context context) {
         DecimalKeypad decimalKeypad = new DecimalKeypad(context);
         decimalKeypad.setOnKeypadEvent(this);
         decimalKeypad.setShowSubmitButton(showSubmitButton);
@@ -138,6 +139,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         decimalKeypad.setTextColor(textColor);
         decimalKeypad.setAllTextSize(textSize);
         llKeypadBox.removeAllViews();
+        cleanView();
         llKeypadBox.addView(decimalKeypad);
     }
 

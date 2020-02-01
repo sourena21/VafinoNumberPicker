@@ -5,10 +5,31 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl">
 
-    <hseify69.ir.numpad.datePicker.KeyboardPersianDatePicker
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbDecimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="عددی" />
+
+        <RadioButton
+            android:id="@+id/rbPersian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:padding="16dp"
+            android:text="فارسی" />
+    </RadioGroup>
+
+    <hseify69.ir.numpad.keyboards.VafinoKeyboard
+        android:id="@+id/keyboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:maxYear="1399"
-        app:minYear="1290"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>
