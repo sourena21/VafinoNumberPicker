@@ -5,8 +5,10 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl">
 
-    <hseify69.ir.numpad.datePicker.NumberPersianDatePicker
+    <hseify69.ir.numpad.datePicker.KeyboardPersianDatePicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:maxYear="1399"
+        app:minYear="1290"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>

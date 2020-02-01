@@ -252,10 +252,6 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
         if (max > minYear) {
             maxYear = max;
         }
-        if (max < year) {
-            year = max;
-            setYear(max);
-        }
     }
 
     public int getMinYear() {
@@ -265,9 +261,6 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
     public void setMinYear(int min) {
         if (min < maxYear) {
             this.minYear = min;
-        }
-        if (min > year) {
-            setYear(min);
         }
     }
 
