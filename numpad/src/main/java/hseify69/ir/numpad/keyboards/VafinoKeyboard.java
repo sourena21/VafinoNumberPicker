@@ -127,7 +127,6 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         persianKeypad.setTextColor(textColor);
         persianKeypad.setAllTextSize(textSize);
         llKeypadBox.removeAllViews();
-        cleanView();
         llKeypadBox.addView(persianKeypad);
     }
 
@@ -139,7 +138,6 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         decimalKeypad.setTextColor(textColor);
         decimalKeypad.setAllTextSize(textSize);
         llKeypadBox.removeAllViews();
-        cleanView();
         llKeypadBox.addView(decimalKeypad);
     }
 
