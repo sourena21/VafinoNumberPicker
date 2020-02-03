@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        keyboard = findViewById(R.id.keyboard);
+//        keyboard = findViewById(R.id.keyboard);
     }
 
     private void setBackgroundResource(TextView textView, int src) {
