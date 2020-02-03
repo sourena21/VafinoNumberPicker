@@ -5,8 +5,11 @@ import android.content.res.TypedArray;
 import android.icu.util.MeasureUnit;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -26,6 +29,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     int displayVisibility = 0;
     boolean showCharPopup = false;
     boolean showSubmitButton = false;
+    boolean showInputTypeSelection = false;
     float textSize;
 
     OnMobileDetected onMobileDetected;
@@ -37,6 +41,8 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     View v;
     LinearLayout llKeyboardBox, llKeypadBox;
     TextView txtEnteredNumber;
+    RadioGroup rgInputType;
+    RadioButton rbPersian, rbDecimal;
 
     public VafinoKeyboard(Context context) {
         super(context);
@@ -60,6 +66,9 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         llKeyboardBox = v.findViewById(R.id.VK_llKeyboardBox);
         llKeypadBox = v.findViewById(R.id.VK_rlKeypadBox);
         txtEnteredNumber = v.findViewById(R.id.VK_txtInput);
+        rgInputType = v.findViewById(R.id.VK_rgInputType);
+        rbPersian = v.findViewById(R.id.VK_rbPersian);
+        rbDecimal = v.findViewById(R.id.VK_rbDecimal);
 
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.VafinoKeyboard);
 
@@ -83,6 +92,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         hintColor = ta.getColor(R.styleable.VafinoKeyboard_inputHintColor, context.getResources().getColor(R.color.colorGrayDark));
         showCharPopup = ta.getBoolean(R.styleable.VafinoKeyboard_showPersianCharPopup, false);
         showSubmitButton = ta.getBoolean(R.styleable.VafinoKeyboard_showSubmitButton, false);
+        showInputTypeSelection = ta.getBoolean(R.styleable.VafinoKeyboard_showInputTypeSelection, false);
 
         txtEnteredNumber.setHint(hintText);
         txtEnteredNumber.setText(enteredNumber);
@@ -90,31 +100,26 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         txtEnteredNumber.setHintTextColor(hintColor);
         txtEnteredNumber.setTextSize(textSize);
 
-        switch (displayVisibility) {
-            case VISIBLE:
-                setInputDisplayVisibility(VISIBLE);
-                break;
-            case INVISIBLE:
-                setInputDisplayVisibility(INVISIBLE);
-                break;
-            case GONE:
-                setInputDisplayVisibility(GONE);
-                break;
-            default:
-                setInputDisplayVisibility(VISIBLE);
-                break;
-        }
-        switch (inputType) {
-            case 1:
-                initKeyboardByPersian(context);
-                break;
-            case 2:
-                initKeyboardByDecimal(context);
-                break;
-            default:
-                initKeyboardByPersian(context);
-                break;
-        }
+        setShowInputTypeSelection(showInputTypeSelection);
+        setDisplayVisibility(displayVisibility);
+        setInputType(inputType);
+
+        rbPersian.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    initKeyboardByPersian(getContext());
+                }
+            }
+        });
+        rbDecimal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    initKeyboardByDecimal(getContext());
+                }
+            }
+        });
 
         this.addView(v);
     }
@@ -289,6 +294,63 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         this.showSubmitButton = showSubmitButton;
     }
 
+    public boolean isShowInputTypeSelection() {
+        return showInputTypeSelection;
+    }
+
+    public void setShowInputTypeSelection(boolean showInputTypeSelection) {
+        this.showInputTypeSelection = showInputTypeSelection;
+        if (showInputTypeSelection) {
+            rgInputType.setVisibility(VISIBLE);
+        } else {
+            rgInputType.setVisibility(GONE);
+        }
+    }
+
+    public int getInputType() {
+        return inputType;
+    }
+
+    public void setInputType(int inputType) {
+        this.inputType = inputType;
+        switch (inputType) {
+            case 1:
+                initKeyboardByPersian(getContext());
+                rbPersian.setChecked(true);
+                break;
+            case 2:
+                initKeyboardByDecimal(getContext());
+                rbDecimal.setChecked(true);
+                break;
+            default:
+                initKeyboardByPersian(getContext());
+                rbPersian.setChecked(true);
+                break;
+        }
+    }
+
+    public int getDisplayVisibility() {
+        return displayVisibility;
+    }
+
+    public void setDisplayVisibility(int displayVisibility) {
+        this.displayVisibility = displayVisibility;
+        switch (displayVisibility) {
+            case VISIBLE:
+                setInputDisplayVisibility(VISIBLE);
+                break;
+            case INVISIBLE:
+                setInputDisplayVisibility(INVISIBLE);
+                break;
+            case GONE:
+                setInputDisplayVisibility(GONE);
+                break;
+            default:
+                setInputDisplayVisibility(VISIBLE);
+                break;
+        }
+    }
+
     @Override
     public void onSubmit() {
         if (onSubmitEntered != null) {
@@ -310,4 +372,5 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     public void onClean() {
         cleanView();
     }
+
 }
