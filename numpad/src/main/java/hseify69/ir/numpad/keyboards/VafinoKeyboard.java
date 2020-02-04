@@ -29,6 +29,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     int displayVisibility = 0;
     boolean showCharPopup = false;
     boolean showSubmitButton = false;
+    boolean showEnterButton = false;
     boolean showInputTypeSelection = false;
     float textSize;
 
@@ -92,6 +93,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         hintColor = ta.getColor(R.styleable.VafinoKeyboard_inputHintColor, context.getResources().getColor(R.color.colorGrayDark));
         showCharPopup = ta.getBoolean(R.styleable.VafinoKeyboard_showPersianCharPopup, false);
         showSubmitButton = ta.getBoolean(R.styleable.VafinoKeyboard_showSubmitButton, false);
+        showEnterButton = ta.getBoolean(R.styleable.VafinoKeyboard_showEnterInPersian, false);
         showInputTypeSelection = ta.getBoolean(R.styleable.VafinoKeyboard_showInputTypeSelection, false);
 
         txtEnteredNumber.setHint(hintText);
@@ -128,6 +130,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         PersianKeypad persianKeypad = new PersianKeypad(context);
         persianKeypad.setOnKeypadEvent(this);
         persianKeypad.setShowCharPopup(showCharPopup);
+        persianKeypad.setShowEnterButton(showEnterButton);
         persianKeypad.setSubmitButtonText(submitButtonText);
         persianKeypad.setTextColor(textColor);
         persianKeypad.setAllTextSize(textSize);

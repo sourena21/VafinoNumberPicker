@@ -30,6 +30,7 @@ public class PersianKeypad extends LinearLayout {
             btnChar33, btnChar34;
     ImageButton imbBackSpace, imbEnter, imbCharSpace;
     private int textColor;
+    private boolean showEnterButton;
 
     public PersianKeypad(Context context) {
         super(context);
@@ -290,7 +291,7 @@ public class PersianKeypad extends LinearLayout {
         btnChar33.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v,'،');
+                addChar(v, '،');
             }
         });
         btnChar34.setOnClickListener(new OnClickListener() {
@@ -524,5 +525,18 @@ public class PersianKeypad extends LinearLayout {
 
     public int getTextColor() {
         return textColor;
+    }
+
+    public void setShowEnterButton(boolean showEnterButton) {
+        this.showEnterButton = showEnterButton;
+        if (showEnterButton) {
+            imbEnter.setVisibility(VISIBLE);
+        } else {
+            imbEnter.setVisibility(INVISIBLE);
+        }
+    }
+
+    public boolean getShowEnterButton() {
+        return showEnterButton;
     }
 }
