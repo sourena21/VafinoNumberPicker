@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl">
 
-    <hseify69.ir.numpad.datePicker.KeyboardPersianDatePicker
+    <hseify69.ir.numpad.keyboards.VafinoKeyboard
         android:id="@+id/keyboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

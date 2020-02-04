@@ -23,7 +23,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ج"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -33,7 +33,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ح"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -43,7 +43,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="خ"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -53,7 +53,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ه"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -63,7 +63,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ع"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -73,7 +73,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="غ"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -83,7 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ف"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -93,7 +93,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ق"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -103,7 +103,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ث"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -113,7 +113,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ص"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -123,7 +123,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ض"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -140,7 +140,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="گ"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -150,7 +150,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ک"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -160,7 +160,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="م"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -170,7 +170,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ن"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -180,7 +180,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ت"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -190,7 +190,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="آ"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -200,7 +200,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ا"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -210,7 +210,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ل"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -220,7 +220,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ب"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -230,7 +230,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ی"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -240,7 +240,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="س"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -250,7 +250,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ش"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -267,7 +267,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_backspace" />
 
@@ -276,7 +276,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="چ"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -286,7 +286,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="و"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -296,7 +296,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="پ"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -306,7 +306,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="د"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -316,7 +316,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ذ"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -326,7 +326,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ر"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -336,7 +336,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ز"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -346,7 +346,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ژ"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -356,7 +356,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ط"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
@@ -366,28 +366,56 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@drawable/numpad_button_background_transparent"
                 android:text="ظ"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="40dp">
 
             <Button
-                android:id="@+id/KDP_btnCharSpace"
-                android:layout_width="wrap_content"
+                android:id="@+id/KDP_btnChar33"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@color/transparent"
-                android:paddingLeft="80dp"
-                android:paddingRight="80dp"
-                android:text="فاصله"
+                android:layout_toLeftOf="@id/KDP_btnChar34"
+                android:background="@drawable/numpad_button_background_transparent"
+                android:text="،"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
-        </LinearLayout>
+
+            <Button
+                android:id="@+id/KDP_btnChar34"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@id/KDP_imbCharEnter"
+                android:background="@drawable/numpad_button_background_transparent"
+                android:text="."
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_large_size" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/KDP_imbCharEnter"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/numpad_button_background_transparent"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_enter_button"
+                android:tint="@color/colorBlack" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/KDP_imbCharSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/numpad_button_background_transparent"
+                android:paddingLeft="80dp"
+                android:paddingRight="80dp"
+                android:src="@drawable/ic_space_bar" />
+        </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

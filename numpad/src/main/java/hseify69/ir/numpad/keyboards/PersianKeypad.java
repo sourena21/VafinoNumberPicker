@@ -1,24 +1,17 @@
 package hseify69.ir.numpad.keyboards;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
-import androidx.core.widget.PopupWindowCompat;
 
 import hseify69.ir.numpad.R;
 
@@ -34,8 +27,8 @@ public class PersianKeypad extends LinearLayout {
             btnChar9, btnChar10, btnChar11, btnChar12, btnChar13, btnChar14, btnChar15, btnChar16,
             btnChar17, btnChar18, btnChar19, btnChar20, btnChar21, btnChar22, btnChar23, btnChar24,
             btnChar25, btnChar26, btnChar27, btnChar28, btnChar29, btnChar30, btnChar31, btnChar32,
-            btnCharSpace;
-    ImageButton imbBackSpace;
+            btnChar33, btnChar34;
+    ImageButton imbBackSpace, imbEnter, imbCharSpace;
     private int textColor;
 
     public PersianKeypad(Context context) {
@@ -90,7 +83,10 @@ public class PersianKeypad extends LinearLayout {
         btnChar30 = v.findViewById(R.id.KDP_btnChar30);
         btnChar31 = v.findViewById(R.id.KDP_btnChar31);
         btnChar32 = v.findViewById(R.id.KDP_btnChar32);
-        btnCharSpace = v.findViewById(R.id.KDP_btnCharSpace);
+        btnChar33 = v.findViewById(R.id.KDP_btnChar33);
+        btnChar34 = v.findViewById(R.id.KDP_btnChar34);
+        imbCharSpace = v.findViewById(R.id.KDP_imbCharSpace);
+        imbEnter = v.findViewById(R.id.KDP_imbCharEnter);
         imbBackSpace = v.findViewById(R.id.KDP_imbBackSpace);
 
         btnChar0.setOnClickListener(new OnClickListener() {
@@ -291,10 +287,28 @@ public class PersianKeypad extends LinearLayout {
                 addChar(v, 'ی');
             }
         });
-        btnCharSpace.setOnClickListener(new OnClickListener() {
+        btnChar33.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addChar(v,'،');
+            }
+        });
+        btnChar34.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addChar(v, '.');
+            }
+        });
+        imbCharSpace.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 addChar(v, ' ');
+            }
+        });
+        imbEnter.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addChar(v, '\n');
             }
         });
         imbBackSpace.setOnClickListener(new OnClickListener() {
@@ -364,7 +378,8 @@ public class PersianKeypad extends LinearLayout {
         btnChar30.setTextSize(allTextSize);
         btnChar31.setTextSize(allTextSize);
         btnChar32.setTextSize(allTextSize);
-        btnCharSpace.setTextSize(allTextSize);
+        btnChar33.setTextSize(allTextSize);
+        btnChar34.setTextSize(allTextSize);
     }
 
     private void setTextColors(int textColor) {
@@ -401,7 +416,8 @@ public class PersianKeypad extends LinearLayout {
         btnChar30.setTextColor(textColor);
         btnChar31.setTextColor(textColor);
         btnChar32.setTextColor(textColor);
-        btnCharSpace.setTextColor(textColor);
+        btnChar33.setTextColor(textColor);
+        btnChar34.setTextColor(textColor);
     }
 
     private void cleanAction() {
