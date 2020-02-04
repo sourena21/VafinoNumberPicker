@@ -396,7 +396,7 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_large_size" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
+            <ImageButton
                 android:id="@+id/KDP_imbCharEnter"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -407,7 +407,7 @@
                 android:src="@drawable/ic_enter_button"
                 android:tint="@color/colorBlack" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
+            <ImageButton
                 android:id="@+id/KDP_imbCharSpace"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
