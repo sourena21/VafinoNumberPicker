@@ -303,14 +303,13 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
     }
 
     public String getSelectedDate() {
-        try {
-//            int y=txt
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (txtYear.getText().toString().trim().length() > 0 &&
+                txtMonth.getText().toString().trim().length() > 0 &&
+                txtDay.getText().toString().trim().length() > 0) {
+            return year + "/" + month + "/" + day;
+        } else {
             return null;
         }
-
-        return year + "/" + month + "/" + day;
     }
 
     public void setSelectedDate(int y, int m, int d) {
