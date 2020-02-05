@@ -21,6 +21,7 @@ public class PersianKeypad extends LinearLayout {
     String submitButtonText = "تایید";
     boolean showCharPopup = false;
     boolean showSubmitButton = false;
+    boolean isShiftSelected = false;
     OnKeypadEvent onKeypadEvent;
 
     Button btnChar0, btnChar1, btnChar2, btnChar3, btnChar4, btnChar5, btnChar6, btnChar7, btnChar8,
@@ -28,7 +29,7 @@ public class PersianKeypad extends LinearLayout {
             btnChar17, btnChar18, btnChar19, btnChar20, btnChar21, btnChar22, btnChar23, btnChar24,
             btnChar25, btnChar26, btnChar27, btnChar28, btnChar29, btnChar30, btnChar31, btnChar32,
             btnChar33, btnChar34;
-    ImageButton imbBackSpace, imbEnter, imbCharSpace;
+    ImageButton imbBackSpace, imbEnter, imbCharSpace, imbShiftButton;
     private int textColor;
     private boolean showEnterButton;
 
@@ -89,203 +90,354 @@ public class PersianKeypad extends LinearLayout {
         imbCharSpace = v.findViewById(R.id.KDP_imbCharSpace);
         imbEnter = v.findViewById(R.id.KDP_imbCharEnter);
         imbBackSpace = v.findViewById(R.id.KDP_imbBackSpace);
+        imbShiftButton = v.findViewById(R.id.KDP_imbShift);
 
         btnChar0.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'آ');
+                if (isShiftSelected) {
+                    addChar(v, '&');
+                    unselectShift();
+                } else {
+                    addChar(v, 'آ');
+                }
             }
         });
         btnChar1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ا');
+                if (isShiftSelected) {
+                    addChar(v, '$');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ا');
+                }
             }
         });
         btnChar2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ب');
+                if (isShiftSelected) {
+                    addChar(v, '@');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ب');
+                }
             }
         });
         btnChar3.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'پ');
+                if (isShiftSelected) {
+                    addChar(v, '/');
+                    unselectShift();
+                } else {
+                    addChar(v, 'پ');
+                }
             }
         });
         btnChar4.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ت');
+                if (isShiftSelected) {
+                    addChar(v, '*');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ت');
+                }
             }
         });
         btnChar5.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ث');
+                if (isShiftSelected) {
+                    addChar(v, '2');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ث');
+                }
             }
         });
         btnChar6.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ج');
+                if (isShiftSelected) {
+                    addChar(v, '0');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ج');
+                }
             }
         });
         btnChar7.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'چ');
+                if (isShiftSelected) {
+                    addChar(v, '؟');
+                    unselectShift();
+                } else {
+                    addChar(v, 'چ');
+                }
             }
         });
         btnChar8.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ح');
+                if (isShiftSelected) {
+                    addChar(v, '9');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ح');
+                }
             }
         });
         btnChar9.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'خ');
+                if (isShiftSelected) {
+                    addChar(v, '8');
+                    unselectShift();
+                } else {
+                    addChar(v, 'خ');
+                }
             }
         });
         btnChar10.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'د');
+                if (isShiftSelected) {
+                    addChar(v, '>');
+                    unselectShift();
+                } else {
+                    addChar(v, 'د');
+                }
             }
         });
         btnChar11.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ذ');
+                if (isShiftSelected) {
+                    addChar(v, '<');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ذ');
+                }
             }
         });
         btnChar12.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ر');
+                if (isShiftSelected) {
+                    addChar(v, '}');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ر');
+                }
             }
         });
         btnChar13.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ز');
+                if (isShiftSelected) {
+                    addChar(v, '{');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ز');
+                }
             }
         });
         btnChar14.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ژ');
+                if (isShiftSelected) {
+                    addChar(v, ']');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ژ');
+                }
             }
         });
         btnChar15.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'س');
+                if (!isShiftSelected) {
+                    addChar(v, 'س');
+                }
             }
         });
         btnChar16.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ش');
+                if (!isShiftSelected) {
+                    addChar(v, 'ش');
+                }
             }
         });
         btnChar17.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ص');
+                if (isShiftSelected) {
+                    addChar(v, '1');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ص');
+                }
             }
         });
         btnChar18.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ض');
+                if (!isShiftSelected) {
+                    addChar(v, 'ض');
+                }
             }
         });
         btnChar19.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ط');
+                if (isShiftSelected) {
+                    addChar(v, '[');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ط');
+                }
             }
         });
         btnChar20.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ظ');
+                if (!isShiftSelected) {
+                    addChar(v, 'ظ');
+                }
             }
         });
         btnChar21.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ع');
+                if (isShiftSelected) {
+                    addChar(v, '6');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ع');
+                }
             }
         });
         btnChar22.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'غ');
+                if (isShiftSelected) {
+                    addChar(v, '5');
+                    unselectShift();
+                } else {
+                    addChar(v, 'غ');
+                }
             }
         });
         btnChar23.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ف');
+                if (isShiftSelected) {
+                    addChar(v, '4');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ف');
+                }
             }
         });
         btnChar24.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ق');
+                if (isShiftSelected) {
+                    addChar(v, '3');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ق');
+                }
             }
         });
         btnChar25.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ک');
+                if (isShiftSelected) {
+                    addChar(v, '(');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ک');
+                }
             }
         });
         btnChar26.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'گ');
+                if (isShiftSelected) {
+                    addChar(v, ')');
+                    unselectShift();
+                } else {
+                    addChar(v, 'گ');
+                }
             }
         });
         btnChar27.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ل');
+                if (isShiftSelected) {
+                    addChar(v, '#');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ل');
+                }
             }
         });
         btnChar28.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'م');
+                if (isShiftSelected) {
+                    addChar(v, '+');
+                    unselectShift();
+                } else {
+                    addChar(v, 'م');
+                }
             }
         });
         btnChar29.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ن');
+                if (isShiftSelected) {
+                    addChar(v, '-');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ن');
+                }
             }
         });
         btnChar30.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'و');
+                if (!isShiftSelected) {
+                    addChar(v, 'و');
+                }
             }
         });
         btnChar31.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ه');
+                if (isShiftSelected) {
+                    addChar(v, '7');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ه');
+                }
             }
         });
         btnChar32.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addChar(v, 'ی');
+                if (isShiftSelected) {
+                    addChar(v, '!');
+                    unselectShift();
+                } else {
+                    addChar(v, 'ی');
+                }
             }
         });
         btnChar33.setOnClickListener(new OnClickListener() {
@@ -318,9 +470,16 @@ public class PersianKeypad extends LinearLayout {
                 backSpaceLast();
             }
         });
-
-        setTextSizes(allTextSize);
-        setTextColors(textColor);
+        imbShiftButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isShiftSelected) {
+                    unselectShift();
+                } else {
+                    selectShift();
+                }
+            }
+        });
 
         imbBackSpace.setOnTouchListener(new OnTouchListener() {
 
@@ -342,7 +501,86 @@ public class PersianKeypad extends LinearLayout {
             }
         });
 
+        setTextSizes(allTextSize);
+        setTextColors(textColor);
+
         this.addView(v);
+    }
+
+    private void selectShift() {
+        isShiftSelected = true;
+        imbShiftButton.setImageResource(R.drawable.ic_shift_button_selected);
+        btnChar0.setText("&");
+        btnChar1.setText("$");
+        btnChar2.setText("@");
+        btnChar3.setText("/");
+        btnChar4.setText("*");
+        btnChar5.setText("2");
+        btnChar6.setText("0");
+        btnChar7.setText("؟");
+        btnChar8.setText("9");
+        btnChar9.setText("8");
+        btnChar10.setText(">");
+        btnChar11.setText("<");
+        btnChar12.setText("}");
+        btnChar13.setText("{");
+        btnChar14.setText("]");
+        btnChar15.setText(" ");
+        btnChar16.setText(" ");
+        btnChar17.setText("1");
+        btnChar18.setText(" ");
+        btnChar19.setText("[");
+        btnChar20.setText(" ");
+        btnChar21.setText("6");
+        btnChar22.setText("5");
+        btnChar23.setText("4");
+        btnChar24.setText("3");
+        btnChar25.setText("(");
+        btnChar26.setText(")");
+        btnChar27.setText("#");
+        btnChar28.setText("+");
+        btnChar29.setText("-");
+        btnChar30.setText(" ");
+        btnChar31.setText("7");
+        btnChar32.setText("!");
+    }
+
+    private void unselectShift() {
+        isShiftSelected = false;
+        imbShiftButton.setImageResource(R.drawable.ic_shift_button_unselected);
+        btnChar0.setText("آ");
+        btnChar1.setText("ا");
+        btnChar2.setText("ب");
+        btnChar3.setText("پ");
+        btnChar4.setText("ت");
+        btnChar5.setText("ث");
+        btnChar6.setText("ج");
+        btnChar7.setText("چ");
+        btnChar8.setText("ح");
+        btnChar9.setText("خ");
+        btnChar10.setText("د");
+        btnChar11.setText("ذ");
+        btnChar12.setText("ر");
+        btnChar13.setText("ز");
+        btnChar14.setText("ژ");
+        btnChar15.setText("س");
+        btnChar16.setText("ش");
+        btnChar17.setText("ص");
+        btnChar18.setText("ض");
+        btnChar19.setText("ط");
+        btnChar20.setText("ظ");
+        btnChar21.setText("ع");
+        btnChar22.setText("غ");
+        btnChar23.setText("ف");
+        btnChar24.setText("ق");
+        btnChar25.setText("ک");
+        btnChar26.setText("گ");
+        btnChar27.setText("ل");
+        btnChar28.setText("م");
+        btnChar29.setText("ن");
+        btnChar30.setText("و");
+        btnChar31.setText("ه");
+        btnChar32.setText("ی");
     }
 
     private void setTextSizes(float allTextSize) {

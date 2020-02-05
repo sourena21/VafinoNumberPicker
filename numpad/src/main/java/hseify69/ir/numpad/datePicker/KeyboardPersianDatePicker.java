@@ -303,11 +303,19 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
     }
 
     public String getSelectedDate() {
-        if (txtYear.getText().toString().trim().length() > 0 &&
-                txtMonth.getText().toString().trim().length() > 0 &&
-                txtDay.getText().toString().trim().length() > 0) {
-            return year + "/" + month + "/" + day;
-        } else {
+        try {
+            int y = Integer.parseInt(txtYear.getText().toString());
+            int m = Integer.parseInt(txtMonth.getText().toString());
+            int d = Integer.parseInt(txtDay.getText().toString());
+            if (y >= minYear && y <= maxYear &&
+                    m >= minMonth && m <= maxMonth &&
+                    d >= minDay && d <= Utils.getDayRange(y, m)) {
+                return y + "/" + m + "/" + d;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
