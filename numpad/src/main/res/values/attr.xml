@@ -21,6 +21,7 @@
         <attr name="showSubmitButton" format="boolean" />
         <attr name="showInputTypeSelection" format="boolean" />
         <attr name="showEnterInPersian" format="boolean" />
+        <attr name="showPunctuationsInPersian" format="boolean" />
         <attr name="setSubmitText" format="string" />
     </declare-styleable>
 

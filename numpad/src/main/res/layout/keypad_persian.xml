@@ -413,8 +413,8 @@
                 android:layout_height="40dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/numpad_button_background_transparent"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:src="@drawable/ic_space_bar" />
 
             <ImageButton

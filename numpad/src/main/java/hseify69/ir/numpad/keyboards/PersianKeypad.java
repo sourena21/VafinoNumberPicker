@@ -32,6 +32,7 @@ public class PersianKeypad extends LinearLayout {
     ImageButton imbBackSpace, imbEnter, imbCharSpace, imbShiftButton;
     private int textColor;
     private boolean showEnterButton;
+    private boolean showPunctuations;
 
     public PersianKeypad(Context context) {
         super(context);
@@ -770,11 +771,29 @@ public class PersianKeypad extends LinearLayout {
         if (showEnterButton) {
             imbEnter.setVisibility(VISIBLE);
         } else {
-            imbEnter.setVisibility(INVISIBLE);
+            imbEnter.setVisibility(GONE);
         }
     }
 
     public boolean getShowEnterButton() {
         return showEnterButton;
+    }
+
+    public void setShowPunctuations(boolean showPunctuations) {
+        this.showPunctuations = showPunctuations;
+        if(showPunctuations)
+        {
+            btnChar33.setVisibility(VISIBLE);
+            btnChar34.setVisibility(VISIBLE);
+            imbShiftButton.setVisibility(VISIBLE);
+        }else {
+            btnChar33.setVisibility(GONE);
+            btnChar34.setVisibility(GONE);
+            imbShiftButton.setVisibility(GONE);
+        }
+    }
+
+    public boolean getShowPunctuations() {
+        return showPunctuations;
     }
 }
