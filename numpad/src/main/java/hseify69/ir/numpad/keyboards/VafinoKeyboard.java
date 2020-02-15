@@ -2,9 +2,12 @@ package hseify69.ir.numpad.keyboards;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.icu.util.MeasureUnit;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputConnection;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -12,15 +15,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-
 import hseify69.ir.numpad.R;
 import hseify69.ir.numpad.helpers.Utils;
 
 public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
     String submitButtonText = "تایید";
-    String enteredNumber = "";
     String hintText = "";
     int maxLength = Integer.MAX_VALUE;
     int textColor = 0;
@@ -33,6 +33,8 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     boolean showPunctuations = true;
     boolean showInputTypeSelection = false;
     float textSize;
+    // Our communication link to the EditText
+    InputConnection inputConnection;
 
     OnMobileDetected onMobileDetected;
     OnNumberEnter onNumberEnter;
@@ -42,7 +44,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
     View v;
     LinearLayout llKeyboardBox, llKeypadBox;
-    TextView txtEnteredNumber;
+    EditText edtInput;
     RadioGroup rgInputType;
     RadioButton rbPersian, rbDecimal;
 
@@ -67,7 +69,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
         llKeyboardBox = v.findViewById(R.id.VK_llKeyboardBox);
         llKeypadBox = v.findViewById(R.id.VK_rlKeypadBox);
-        txtEnteredNumber = v.findViewById(R.id.VK_txtInput);
+        edtInput = v.findViewById(R.id.VK_edtInput);
         rgInputType = v.findViewById(R.id.VK_rgInputType);
         rbPersian = v.findViewById(R.id.VK_rbPersian);
         rbDecimal = v.findViewById(R.id.VK_rbDecimal);
@@ -86,9 +88,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
             submitButtonText = submitText;
         }
         String tempValue = ta.getString(R.styleable.VafinoKeyboard_inputValue);
-        if (tempValue != null && tempValue.length() > 0) {
-            enteredNumber = tempValue;
-        }
+
         textColor = ta.getColor(R.styleable.VafinoKeyboard_inputTextColor, context.getResources().getColor(R.color.colorBlack));
         textSize = ta.getDimension(R.styleable.VafinoKeyboard_textSize, context.getResources().getDimension(R.dimen.text_small_size));
         hintColor = ta.getColor(R.styleable.VafinoKeyboard_inputHintColor, context.getResources().getColor(R.color.colorGrayDark));
@@ -98,11 +98,13 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         showPunctuations = ta.getBoolean(R.styleable.VafinoKeyboard_showPunctuationsInPersian, true);
         showInputTypeSelection = ta.getBoolean(R.styleable.VafinoKeyboard_showInputTypeSelection, false);
 
-        txtEnteredNumber.setHint(hintText);
-        txtEnteredNumber.setText(enteredNumber);
-        txtEnteredNumber.setTextColor(textColor);
-        txtEnteredNumber.setHintTextColor(hintColor);
-        txtEnteredNumber.setTextSize(textSize);
+        edtInput.setHint(hintText);
+        if (tempValue != null && tempValue.length() > 0) {
+            edtInput.setText(tempValue);
+        }
+        edtInput.setTextColor(textColor);
+        edtInput.setHintTextColor(hintColor);
+        edtInput.setTextSize(textSize);
 
         setShowInputTypeSelection(showInputTypeSelection);
         setDisplayVisibility(displayVisibility);
@@ -125,7 +127,21 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
             }
         });
 
+        // prevent system keyboard from appearing when EditText is tapped
+        edtInput.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        edtInput.setTextIsSelectable(true);
+
+        // pass the InputConnection from the EditText to the keyboard
+        InputConnection ic = edtInput.onCreateInputConnection(new EditorInfo());
+        this.setInputConnection(ic);
+
         this.addView(v);
+    }
+
+    // The activity (or some parent or controller) must give us
+    // a reference to the current EditText's InputConnection
+    public void setInputConnection(InputConnection ic) {
+        this.inputConnection = ic;
     }
 
     public void initKeyboardByPersian(Context context) {
@@ -153,52 +169,55 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     }
 
     private void cleanView() {
-        enteredNumber = "";
-        showEnteredNumber(enteredNumber);
+        showEnteredNumber("");
     }
 
     private void backSpaceLast() {
         if (onBackspace != null) {
             onBackspace.onBackspace();
         }
-        if (enteredNumber.length() > 0) {
-            enteredNumber = enteredNumber.substring(0, enteredNumber.length() - 1);
-            if (enteredNumber.length() > 0) {
-                showEnteredNumber(enteredNumber);
+        if (edtInput.getText().toString().length() > 0) {
+            CharSequence selectedText = inputConnection.getSelectedText(0);
+            if (TextUtils.isEmpty(selectedText)) {
+                // no selection, so delete previous character
+                inputConnection.deleteSurroundingText(1, 0);
             } else {
-                cleanView();
+                // delete the selection
+                inputConnection.commitText("", 1);
             }
+//            enteredNumber = enteredNumber.substring(0, enteredNumber.length() - 1);
+//            if (enteredNumber.length() > 0) {
+//                showEnteredNumber(enteredNumber);
+//            } else {
+//                cleanView();
+//            }
         }
     }
 
     private void showEnteredNumber(String text) {
-        txtEnteredNumber.setText(text);
+        edtInput.setText(text);
         if (onChangeEntered != null) {
-            onChangeEntered.onChange(enteredNumber);
+            onChangeEntered.onChange(text);
         }
     }
 
     private void addChar(char c) {
-        if (enteredNumber.length() < maxLength) {
-            enteredNumber += c;
-            showEnteredNumber(enteredNumber);
+        if (edtInput.getText().toString().length() < maxLength) {
+//            enteredNumber += c;
+//            showEnteredNumber(enteredNumber);
+            inputConnection.commitText(String.valueOf(c), 1);
             if (onNumberEnter != null) {
-                onNumberEnter.onEnter(c, enteredNumber);
+                onNumberEnter.onEnter(c, edtInput.getText().toString());
             }
-            if (Utils.isEnteredCellNumber(enteredNumber) && onMobileDetected != null) {
-                onMobileDetected.onDetect(Utils.getStandardMobileFormat(enteredNumber));
+            if (Utils.isEnteredCellNumber(edtInput.getText().toString()) && onMobileDetected != null) {
+                onMobileDetected.onDetect(Utils.getStandardMobileFormat(edtInput.getText().toString()));
                 cleanView();
             }
         }
     }
 
-    public String getEnteredNumber() {
-        return enteredNumber;
-    }
-
     public void setEnteredNumber(String number) {
-        this.enteredNumber = number;
-        showEnteredNumber(enteredNumber);
+        showEnteredNumber(number);
     }
 
     public String getHintText() {
@@ -207,9 +226,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
     public void setHintText(String text) {
         this.hintText = text;
-        if (enteredNumber.length() == 0) {
-            cleanView();
-        }
+        edtInput.setHint(hintText);
     }
 
     public void setBackSpaceButtonBackground(int src) {
@@ -262,7 +279,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
     public void setInputDisplayVisibility(int visibility) {
         if (visibility == VISIBLE || visibility == INVISIBLE || visibility == GONE) {
-            txtEnteredNumber.setVisibility(visibility);
+            edtInput.setVisibility(visibility);
         }
     }
 
@@ -274,14 +291,20 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         this.maxLength = maxLength;
     }
 
-    public void setInput(TextView textView) {
-        if (textView != null) {
-            txtEnteredNumber = textView;
-            enteredNumber = textView.getText().toString();
+    public void setInput(EditText edt) {
+        if (edt != null) {
+            edtInput = edt;
         } else {
-            txtEnteredNumber = v.findViewById(R.id.VK_txtInput);
-            enteredNumber = txtEnteredNumber.getText().toString();
+            edtInput = v.findViewById(R.id.VK_edtInput);
         }
+
+        // prevent system keyboard from appearing when EditText is tapped
+        edt.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        edt.setTextIsSelectable(true);
+
+        // pass the InputConnection from the EditText to the keyboard
+        InputConnection ic = edt.onCreateInputConnection(new EditorInfo());
+        this.setInputConnection(ic);
     }
 
     public boolean isShowCharPopup() {
@@ -360,7 +383,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     @Override
     public void onSubmit() {
         if (onSubmitEntered != null) {
-            onSubmitEntered.onSubmit(enteredNumber);
+            onSubmitEntered.onSubmit(edtInput.getText().toString());
         }
     }
 

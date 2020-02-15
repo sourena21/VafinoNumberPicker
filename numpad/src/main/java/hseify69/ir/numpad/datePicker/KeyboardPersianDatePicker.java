@@ -3,9 +3,15 @@ package hseify69.ir.numpad.datePicker;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputConnection;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -13,9 +19,8 @@ import hseify69.ir.numpad.R;
 import hseify69.ir.numpad.helpers.Consts;
 import hseify69.ir.numpad.helpers.Utils;
 import hseify69.ir.numpad.keyboards.VafinoKeyboard;
-import saman.zamani.persiandate.PersianDate;
 
-public class KeyboardPersianDatePicker extends RelativeLayout {
+public class KeyboardPersianDatePicker extends LinearLayout {
 
     int maxYear = Consts.maxYear;
     int minYear = Consts.minYear;
@@ -25,7 +30,7 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
     int minDay = Consts.minDay;
     int day, month, year;
 
-    TextView txtYear, txtMonth, txtDay, txtSelected;
+    EditText edtYear, edtMonth, edtDay;
     VafinoKeyboard keyboard;
 
     public KeyboardPersianDatePicker(Context context) {
@@ -44,14 +49,19 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
     }
 
     public void init(Context context, AttributeSet attrs) {
-        View v = View.inflate(context, R.layout.keyboard_persian_date_picker, null);
+        LayoutInflater.from(context).inflate(R.layout.keyboard_persian_date_picker, this, true);
 
-        txtYear = v.findViewById(R.id.KPDP_edtYear);
-        txtMonth = v.findViewById(R.id.KPDP_edtMonth);
-        txtDay = v.findViewById(R.id.KPDP_edtDay);
-        keyboard = v.findViewById(R.id.KPDP_dateInput);
+        edtYear = findViewById(R.id.KPDP_edtYear);
+        edtMonth = findViewById(R.id.KPDP_edtMonth);
+        edtDay = findViewById(R.id.KPDP_edtDay);
+        keyboard = findViewById(R.id.KPDP_dateInput);
 
-        switchToInput(txtDay);
+        edtYear.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        edtYear.setTextIsSelectable(true);
+        edtMonth.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        edtMonth.setTextIsSelectable(true);
+        edtDay.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        edtDay.setTextIsSelectable(true);
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.KeyboardPersianDatePicker);
 
@@ -61,7 +71,9 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
         setMonth(ta.getInteger(R.styleable.KeyboardPersianDatePicker_month, 0));
         setDay(ta.getInteger(R.styleable.KeyboardPersianDatePicker_day, 0));
 
-        txtYear.addTextChangedListener(new TextWatcher() {
+        switchToInput(edtDay);
+
+        edtYear.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -70,17 +82,19 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    year = Integer.parseInt(String.valueOf(s));
-                    if (s.length() == 4) {
-                        maxDay = Utils.getDayRange(year, month);
-                        setDayAmount();
-                        if (year > maxYear) {
-                            txtYear.setText(String.valueOf(maxYear));
-                        } else if (year < minYear) {
-                            txtYear.setText(String.valueOf(minYear));
+                    if (s.length() == 0) {
+                        switchToInput(edtMonth);
+                    } else {
+                        year = Integer.parseInt(String.valueOf(s));
+                        if (s.length() == 4) {
+                            maxDay = Utils.getDayRange(year, month);
+                            setDayAmount();
+                            if (year > maxYear) {
+                                edtYear.setText(String.valueOf(maxYear));
+                            } else if (year < minYear) {
+                                edtYear.setText(String.valueOf(minYear));
+                            }
                         }
-                    } else if (s.length() == 0) {
-                        switchToInput(txtMonth);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -91,7 +105,7 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
             public void afterTextChanged(Editable s) {
             }
         });
-        txtMonth.addTextChangedListener(new TextWatcher() {
+        edtMonth.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -100,18 +114,20 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    month = Integer.parseInt(String.valueOf(s));
-                    if (s.length() == 2 || month > 1) {
-                        maxDay = Utils.getDayRange(year, month);
-                        setDayAmount();
-                        if (month > maxMonth) {
-                            txtMonth.setText(String.valueOf(maxMonth));
-                        } else if (month < minMonth) {
-                            txtMonth.setText(String.valueOf(minMonth));
+                    if (s.length() == 0) {
+                        switchToInput(edtDay);
+                    } else {
+                        month = Integer.parseInt(String.valueOf(s));
+                        if (s.length() == 2 || month > 1) {
+                            maxDay = Utils.getDayRange(year, month);
+                            setDayAmount();
+                            if (month > maxMonth) {
+                                edtMonth.setText(String.valueOf(maxMonth));
+                            } else if (month < minMonth) {
+                                edtMonth.setText(String.valueOf(minMonth));
+                            }
+                            switchToInput(edtYear);
                         }
-                        switchToInput(txtYear);
-                    } else if (s.length() == 0) {
-                        switchToInput(txtDay);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -122,7 +138,7 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
             public void afterTextChanged(Editable s) {
             }
         });
-        txtDay.addTextChangedListener(new TextWatcher() {
+        edtDay.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -135,7 +151,7 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
                     if (s.length() == 2 || day > 3) {
                         maxDay = Utils.getDayRange(year, month);
                         setDayAmount();
-                        switchToInput(txtMonth);
+                        switchToInput(edtMonth);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -146,102 +162,40 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
             public void afterTextChanged(Editable s) {
             }
         });
-        txtYear.setOnFocusChangeListener(new OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    try {
-                        year = Integer.parseInt(String.valueOf(txtYear.getText()));
-                        if (txtYear.getText().length() == 4) {
-                            maxDay = Utils.getDayRange(year, month);
-                            setDayAmount();
-                            if (year > maxYear) {
-                                txtYear.setText(String.valueOf(maxYear));
-                            } else if (year < minYear) {
-                                txtYear.setText(String.valueOf(minYear));
-                            }
-                        } else if (txtYear.getText().length() == 0) {
-                            switchToInput(txtMonth);
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        txtYear.setOnClickListener(new OnClickListener() {
+        edtYear.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchToInput(txtYear);
+                switchToInput(edtYear);
             }
         });
-        txtMonth.setOnClickListener(new OnClickListener() {
+        edtMonth.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchToInput(txtMonth);
+                switchToInput(edtMonth);
             }
         });
-        txtDay.setOnClickListener(new OnClickListener() {
+        edtDay.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchToInput(txtDay);
+                switchToInput(edtDay);
             }
         });
-        keyboard.setOnNumberEnter(new VafinoKeyboard.OnNumberEnter() {
-            @Override
-            public void onEnter(char c, String wholeEntered) {
-                txtSelected.append(String.valueOf(c));
-            }
-        });
-        keyboard.setOnBackspace(new VafinoKeyboard.OnBackspace() {
-            @Override
-            public void onBackspace() {
-                if (txtSelected.getText().length() > 0) {
-                    backspaceInput();
-                } else {
-                    if (txtSelected.equals(txtYear)) {
-                        switchToInput(txtMonth);
-                        if (!backspaceInput()) {
-                            switchToInput(txtDay);
-                            backspaceInput();
-                        }
-                    } else if (txtSelected.equals(txtMonth)) {
-                        switchToInput(txtDay);
-                        backspaceInput();
-                    }
-                }
-            }
-        });
-
-        this.addView(v);
     }
 
     private void setDayAmount() {
         if (day > maxDay) {
             day = maxDay;
-            txtDay.setText(String.valueOf(maxDay));
+            edtDay.setText(String.valueOf(maxDay));
         } else if (day < minDay) {
             day = minDay;
-            txtDay.setText(String.valueOf(minDay));
+            edtDay.setText(String.valueOf(minDay));
         }
 
     }
 
-    private boolean backspaceInput() {
-        if (txtSelected.getText().length() > 0) {
-            txtSelected.setText(txtSelected.getText().subSequence(0, txtSelected.getText().length() - 1));
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private void switchToInput(TextView textView) {
-        txtSelected = textView;
-        txtDay.setBackground(null);
-        txtMonth.setBackground(null);
-        txtYear.setBackground(null);
-        txtSelected.setBackground(getResources().getDrawable(R.drawable.numpad_border_bottom_black));
+    private void switchToInput(EditText editText) {
+        keyboard.setInput(editText);
+        editText.requestFocus();
     }
 
     public int getMaxYear() {
@@ -271,7 +225,7 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
     public void setYear(int y) {
         if (y > 0 && y <= maxYear && y >= minYear) {
             year = y;
-            txtYear.setText(String.valueOf(y));
+            edtYear.setText(String.valueOf(y));
             maxDay = Utils.getDayRange(year, month);
             setDay(day);
         }
@@ -284,7 +238,7 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
     public void setMonth(int m) {
         if (m <= maxMonth && m >= minMonth) {
             month = m;
-            txtMonth.setText(String.valueOf(m));
+            edtMonth.setText(String.valueOf(m));
             maxDay = Utils.getDayRange(year, month);
             setDay(day);
         }
@@ -297,16 +251,16 @@ public class KeyboardPersianDatePicker extends RelativeLayout {
     public void setDay(int d) {
         if (d <= maxDay && d >= minDay) {
             day = d;
-            txtDay.setText(String.valueOf(d));
+            edtDay.setText(String.valueOf(d));
             maxDay = Utils.getDayRange(year, month);
         }
     }
 
     public String getSelectedDate() {
         try {
-            int y = Integer.parseInt(txtYear.getText().toString());
-            int m = Integer.parseInt(txtMonth.getText().toString());
-            int d = Integer.parseInt(txtDay.getText().toString());
+            int y = Integer.parseInt(edtYear.getText().toString());
+            int m = Integer.parseInt(edtMonth.getText().toString());
+            int d = Integer.parseInt(edtDay.getText().toString());
             if (y >= minYear && y <= maxYear &&
                     m >= minMonth && m <= maxMonth &&
                     d >= minDay && d <= Utils.getDayRange(y, m)) {
