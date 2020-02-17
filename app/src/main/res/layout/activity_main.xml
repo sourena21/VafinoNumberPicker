@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl">
 
-    <hseify69.ir.numpad.keyboards.VafinoKeyboard
+    <hseify69.ir.numpad.datePicker.KeyboardPersianDatePicker
         android:id="@+id/keyboard"
         android:layout_width="match_parent"
-        app:showEnterInPersian="true"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        app:day="12"
+        app:month="6"
+        app:year="1369" />
 </RelativeLayout>
