@@ -3,6 +3,7 @@ package hseify69.ir.numpad.datePicker;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
@@ -45,12 +46,11 @@ public class NumberPersianDatePicker extends LinearLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        this.removeAllViews();
-        View v = View.inflate(context, R.layout.number_persian_date_picker, null);
+        LayoutInflater.from(context).inflate(R.layout.number_persian_date_picker, this,true);
 
-        npcYear = v.findViewById(R.id.NPDP_npcYear);
-        npcMonth = v.findViewById(R.id.NPDP_npcMonth);
-        npcDay = v.findViewById(R.id.NPDP_npcDay);
+        npcYear = findViewById(R.id.NPDP_npcYear);
+        npcMonth = findViewById(R.id.NPDP_npcMonth);
+        npcDay = findViewById(R.id.NPDP_npcDay);
 
         persianDate = new PersianDate();
         setYear(persianDate.getShYear());
@@ -95,8 +95,6 @@ public class NumberPersianDatePicker extends LinearLayout {
                 persianDate.setShDay(newVal);
             }
         });
-
-        this.addView(v);
     }
 
     public int getMaxYear() {

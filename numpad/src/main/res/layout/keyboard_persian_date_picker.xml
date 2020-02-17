@@ -17,22 +17,36 @@
             android:orientation="horizontal"
             android:padding="4dp">
 
-            <EditText
-                android:id="@+id/KPDP_edtDay"
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:digits="1234567890"
-                android:gravity="center"
-                android:hint="روز"
-                android:imeOptions="actionDone"
-                android:inputType="numberDecimal"
-                android:maxLength="2"
-                android:minWidth="48dp"
-                android:padding="16dp"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorGray"
-                android:textSize="@dimen/text_extra_large_size" />
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/KPDP_edtDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:digits="1234567890"
+                    android:gravity="center"
+                    android:hint="روز"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:maxLength="2"
+                    android:minWidth="48dp"
+                    android:padding="16dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorGray"
+                    android:textSize="@dimen/text_extra_large_size" />
+
+                <View
+                    android:id="@+id/KPDP_vwDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/KPDP_edtDay"
+                    android:layout_alignTop="@id/KPDP_edtDay"
+                    android:layout_alignRight="@id/KPDP_edtDay"
+                    android:layout_alignBottom="@id/KPDP_edtDay" />
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -42,22 +56,36 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_extra_large_size" />
 
-            <EditText
-                android:id="@+id/KPDP_edtMonth"
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:digits="1234567890"
-                android:gravity="center"
-                android:hint="ماه"
-                android:imeOptions="actionNext"
-                android:inputType="numberDecimal"
-                android:maxLength="2"
-                android:minWidth="48dp"
-                android:padding="16dp"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorGray"
-                android:textSize="@dimen/text_extra_large_size" />
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/KPDP_edtMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:digits="1234567890"
+                    android:gravity="center"
+                    android:hint="ماه"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="2"
+                    android:minWidth="48dp"
+                    android:padding="16dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorGray"
+                    android:textSize="@dimen/text_extra_large_size" />
+
+                <View
+                    android:id="@+id/KPDP_vwMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/KPDP_edtMonth"
+                    android:layout_alignTop="@id/KPDP_edtMonth"
+                    android:layout_alignRight="@id/KPDP_edtMonth"
+                    android:layout_alignBottom="@id/KPDP_edtMonth" />
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,30 +95,44 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_extra_large_size" />
 
-            <EditText
-                android:id="@+id/KPDP_edtYear"
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:digits="1234567890"
-                android:gravity="center"
-                android:hint="سال"
-                android:imeOptions="actionNext"
-                android:inputType="numberDecimal"
-                android:maxLength="4"
-                android:minWidth="96dp"
-                android:padding="16dp"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorGray"
-                android:textSize="@dimen/text_extra_large_size" />
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/KPDP_edtYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:digits="1234567890"
+                    android:gravity="center"
+                    android:hint="سال"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="4"
+                    android:minWidth="96dp"
+                    android:padding="16dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorGray"
+                    android:textSize="@dimen/text_extra_large_size" />
+
+                <View
+                    android:id="@+id/KPDP_vwYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/KPDP_edtYear"
+                    android:layout_alignTop="@id/KPDP_edtYear"
+                    android:layout_alignRight="@id/KPDP_edtYear"
+                    android:layout_alignBottom="@id/KPDP_edtYear" />
+            </RelativeLayout>
         </LinearLayout>
 
         <hseify69.ir.numpad.keyboards.VafinoKeyboard
             android:id="@+id/KPDP_dateInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:displayVisibility="gone"
             app:inputType="number_decimal"
-            app:showSubmitButton="false"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            app:showSubmitButton="false" />
     </LinearLayout>
 </merge>

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -50,48 +51,47 @@ public class PersianKeypad extends LinearLayout {
     }
 
     private void initView(Context context) {
-        this.removeAllViews();
-        View v = View.inflate(context, R.layout.keypad_persian, null);
+        LayoutInflater.from(context).inflate(R.layout.keypad_persian, this,true);
 
-        btnChar0 = v.findViewById(R.id.KDP_btnChar0);
-        btnChar1 = v.findViewById(R.id.KDP_btnChar1);
-        btnChar2 = v.findViewById(R.id.KDP_btnChar2);
-        btnChar3 = v.findViewById(R.id.KDP_btnChar3);
-        btnChar4 = v.findViewById(R.id.KDP_btnChar4);
-        btnChar5 = v.findViewById(R.id.KDP_btnChar5);
-        btnChar6 = v.findViewById(R.id.KDP_btnChar6);
-        btnChar7 = v.findViewById(R.id.KDP_btnChar7);
-        btnChar8 = v.findViewById(R.id.KDP_btnChar8);
-        btnChar9 = v.findViewById(R.id.KDP_btnChar9);
-        btnChar10 = v.findViewById(R.id.KDP_btnChar10);
-        btnChar11 = v.findViewById(R.id.KDP_btnChar11);
-        btnChar12 = v.findViewById(R.id.KDP_btnChar12);
-        btnChar13 = v.findViewById(R.id.KDP_btnChar13);
-        btnChar14 = v.findViewById(R.id.KDP_btnChar14);
-        btnChar15 = v.findViewById(R.id.KDP_btnChar15);
-        btnChar16 = v.findViewById(R.id.KDP_btnChar16);
-        btnChar17 = v.findViewById(R.id.KDP_btnChar17);
-        btnChar18 = v.findViewById(R.id.KDP_btnChar18);
-        btnChar19 = v.findViewById(R.id.KDP_btnChar19);
-        btnChar20 = v.findViewById(R.id.KDP_btnChar20);
-        btnChar21 = v.findViewById(R.id.KDP_btnChar21);
-        btnChar22 = v.findViewById(R.id.KDP_btnChar22);
-        btnChar23 = v.findViewById(R.id.KDP_btnChar23);
-        btnChar24 = v.findViewById(R.id.KDP_btnChar24);
-        btnChar25 = v.findViewById(R.id.KDP_btnChar25);
-        btnChar26 = v.findViewById(R.id.KDP_btnChar26);
-        btnChar27 = v.findViewById(R.id.KDP_btnChar27);
-        btnChar28 = v.findViewById(R.id.KDP_btnChar28);
-        btnChar29 = v.findViewById(R.id.KDP_btnChar29);
-        btnChar30 = v.findViewById(R.id.KDP_btnChar30);
-        btnChar31 = v.findViewById(R.id.KDP_btnChar31);
-        btnChar32 = v.findViewById(R.id.KDP_btnChar32);
-        btnChar33 = v.findViewById(R.id.KDP_btnChar33);
-        btnChar34 = v.findViewById(R.id.KDP_btnChar34);
-        imbCharSpace = v.findViewById(R.id.KDP_imbCharSpace);
-        imbEnter = v.findViewById(R.id.KDP_imbCharEnter);
-        imbBackSpace = v.findViewById(R.id.KDP_imbBackSpace);
-        imbShiftButton = v.findViewById(R.id.KDP_imbShift);
+        btnChar0 = findViewById(R.id.KDP_btnChar0);
+        btnChar1 = findViewById(R.id.KDP_btnChar1);
+        btnChar2 = findViewById(R.id.KDP_btnChar2);
+        btnChar3 = findViewById(R.id.KDP_btnChar3);
+        btnChar4 = findViewById(R.id.KDP_btnChar4);
+        btnChar5 = findViewById(R.id.KDP_btnChar5);
+        btnChar6 = findViewById(R.id.KDP_btnChar6);
+        btnChar7 = findViewById(R.id.KDP_btnChar7);
+        btnChar8 = findViewById(R.id.KDP_btnChar8);
+        btnChar9 = findViewById(R.id.KDP_btnChar9);
+        btnChar10 = findViewById(R.id.KDP_btnChar10);
+        btnChar11 = findViewById(R.id.KDP_btnChar11);
+        btnChar12 = findViewById(R.id.KDP_btnChar12);
+        btnChar13 = findViewById(R.id.KDP_btnChar13);
+        btnChar14 = findViewById(R.id.KDP_btnChar14);
+        btnChar15 = findViewById(R.id.KDP_btnChar15);
+        btnChar16 = findViewById(R.id.KDP_btnChar16);
+        btnChar17 = findViewById(R.id.KDP_btnChar17);
+        btnChar18 = findViewById(R.id.KDP_btnChar18);
+        btnChar19 = findViewById(R.id.KDP_btnChar19);
+        btnChar20 = findViewById(R.id.KDP_btnChar20);
+        btnChar21 = findViewById(R.id.KDP_btnChar21);
+        btnChar22 = findViewById(R.id.KDP_btnChar22);
+        btnChar23 = findViewById(R.id.KDP_btnChar23);
+        btnChar24 = findViewById(R.id.KDP_btnChar24);
+        btnChar25 = findViewById(R.id.KDP_btnChar25);
+        btnChar26 = findViewById(R.id.KDP_btnChar26);
+        btnChar27 = findViewById(R.id.KDP_btnChar27);
+        btnChar28 = findViewById(R.id.KDP_btnChar28);
+        btnChar29 = findViewById(R.id.KDP_btnChar29);
+        btnChar30 = findViewById(R.id.KDP_btnChar30);
+        btnChar31 = findViewById(R.id.KDP_btnChar31);
+        btnChar32 = findViewById(R.id.KDP_btnChar32);
+        btnChar33 = findViewById(R.id.KDP_btnChar33);
+        btnChar34 = findViewById(R.id.KDP_btnChar34);
+        imbCharSpace = findViewById(R.id.KDP_imbCharSpace);
+        imbEnter = findViewById(R.id.KDP_imbCharEnter);
+        imbBackSpace = findViewById(R.id.KDP_imbBackSpace);
+        imbShiftButton = findViewById(R.id.KDP_imbShift);
 
         btnChar0.setOnClickListener(new OnClickListener() {
             @Override
@@ -504,8 +504,6 @@ public class PersianKeypad extends LinearLayout {
 
         setTextSizes(allTextSize);
         setTextColors(textColor);
-
-        this.addView(v);
     }
 
     private void selectShift() {
