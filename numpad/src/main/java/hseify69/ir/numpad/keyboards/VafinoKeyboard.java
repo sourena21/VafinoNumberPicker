@@ -185,6 +185,9 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
                 // delete the selection
                 inputConnection.commitText("", 1);
             }
+            if (onChangeEntered != null) {
+                onChangeEntered.onChange(edtInput.getText().toString());
+            }
 //            enteredNumber = enteredNumber.substring(0, enteredNumber.length() - 1);
 //            if (enteredNumber.length() > 0) {
 //                showEnteredNumber(enteredNumber);
@@ -212,6 +215,9 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
             if (Utils.isEnteredCellNumber(edtInput.getText().toString()) && onMobileDetected != null) {
                 onMobileDetected.onDetect(Utils.getStandardMobileFormat(edtInput.getText().toString()));
                 cleanView();
+            }
+            if (onChangeEntered != null) {
+                onChangeEntered.onChange(edtInput.getText().toString());
             }
         }
     }

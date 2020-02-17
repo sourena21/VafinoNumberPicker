@@ -5,12 +5,60 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl">
 
-    <hseify69.ir.numpad.datePicker.KeyboardPersianDatePicker
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:hint="نام" />
+
+            <View
+                android:id="@+id/vwName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/edtName"
+                android:layout_alignBottom="@id/edtName" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edtFamily"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:hint="نام خانوادگی" />
+
+            <View
+                android:id="@+id/vwFamily"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/edtFamily"
+                android:layout_alignBottom="@id/edtFamily" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <hseify69.ir.numpad.keyboards.VafinoKeyboard
         android:id="@+id/keyboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:showEnterInPersian="true"
+        app:inputType="number_decimal"
         android:layout_alignParentBottom="true"
-        app:day="12"
-        app:month="6"
-        app:year="1369" />
+        app:displayVisibility="gone" />
 </RelativeLayout>
