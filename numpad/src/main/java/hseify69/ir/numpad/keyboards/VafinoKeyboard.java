@@ -169,7 +169,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     }
 
     private void cleanView() {
-        showEnteredNumber("");
+        setEntered("");
     }
 
     private void backSpaceLast() {
@@ -197,13 +197,6 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         }
     }
 
-    private void showEnteredNumber(String text) {
-        edtInput.setText(text);
-        if (onChangeEntered != null) {
-            onChangeEntered.onChange(text);
-        }
-    }
-
     private void addChar(char c) {
         if (edtInput.getText().toString().length() < maxLength) {
 //            enteredNumber += c;
@@ -222,8 +215,12 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         }
     }
 
-    public void setEnteredNumber(String number) {
-        showEnteredNumber(number);
+    public void setEntered(String text) {
+        edtInput.setText(text);
+        edtInput.setSelection(edtInput.getText().toString().length());
+        if (onChangeEntered != null) {
+            onChangeEntered.onChange(text);
+        }
     }
 
     public String getHintText() {

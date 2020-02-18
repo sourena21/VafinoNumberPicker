@@ -17,11 +17,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <EditText
+            <TextView
                 android:id="@+id/edtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:gravity="center"
                 android:hint="نام" />
 
             <View
@@ -37,11 +38,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <EditText
+            <TextView
                 android:id="@+id/edtFamily"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:gravity="center"
                 android:hint="نام خانوادگی" />
 
             <View
@@ -57,8 +59,8 @@
         android:id="@+id/keyboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:showEnterInPersian="true"
-        app:inputType="number_decimal"
         android:layout_alignParentBottom="true"
-        app:displayVisibility="gone" />
+        app:displayVisibility="gone"
+        app:inputType="number_decimal"
+        app:showEnterInPersian="true" />
 </RelativeLayout>
