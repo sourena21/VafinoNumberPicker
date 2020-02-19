@@ -63,12 +63,9 @@
         android:layout_centerHorizontal="true"
         android:text="Submit" />
 
-    <hseify69.ir.numpad.datePicker.NumberPersianDatePicker
+    <hseify69.ir.numpad.datePicker.KeyboardPersianDatePicker
         android:id="@+id/keyboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:day="12"
-        app:month="6"
-        app:year="1369" />
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

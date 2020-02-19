@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
 
     //    VafinoKeyboard keyboard;
 //    TextView edtName, edtFamily, txtSelected;
-    NumberPersianDatePicker datePicker;
+    KeyboardPersianDatePicker datePicker;
     Button btnSubmitDate;
 
     @Override

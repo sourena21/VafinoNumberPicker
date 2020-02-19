@@ -29,7 +29,7 @@ import hseify69.ir.numpad.keyboards.VafinoKeyboard;
 public class KeyboardPersianDatePicker extends LinearLayout {
 
     int maxYear = 99;
-    int minYear = 0;
+    int minYear = 1;
     int maxMonth = Consts.maxMonth;
     int minMonth = Consts.minMonth;
     int maxDay = Consts.maxDay;
@@ -244,7 +244,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
                 maxDay = Utils.getDayRange(year+1300, month);
                 setDay(day);
             }
-        } else if (y < 100 && y >= 0) {
+        } else if (y < 100 && y > 0) {
             if (y <= maxYear && y >= minYear) {
                 year = y;
                 edtYear.setText(String.valueOf(y));
