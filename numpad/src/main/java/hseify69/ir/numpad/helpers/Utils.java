@@ -1,6 +1,6 @@
 package hseify69.ir.numpad.helpers;
 
-import saman.zamani.persiandate.PersianDate;
+import java.util.Arrays;
 
 public class Utils {
 
@@ -58,7 +58,7 @@ public class Utils {
             } else if (monthVal >= 7 && monthVal <= 11) {
                 return 30;
             } else if (monthVal == 12) {
-                if (PersianDate.isJalaliLeap(yearVal)) {
+                if (DateConverter.isJalaliLeap(yearVal)) {
                     return 30;
                 } else {
                     return 29;
