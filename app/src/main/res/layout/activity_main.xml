@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -55,12 +56,19 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <hseify69.ir.numpad.keyboards.VafinoKeyboard
+    <Button
+        android:id="@+id/btnSubmitDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Submit" />
+
+    <hseify69.ir.numpad.datePicker.NumberPersianDatePicker
         android:id="@+id/keyboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:displayVisibility="gone"
-        app:inputType="number_decimal"
-        app:showEnterInPersian="true" />
+        app:day="12"
+        app:month="6"
+        app:year="1369" />
 </RelativeLayout>

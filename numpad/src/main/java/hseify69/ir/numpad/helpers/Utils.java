@@ -52,15 +52,19 @@ public class Utils {
     }
 
     public static int getDayRange(int yearVal, int monthVal) {
-        if (monthVal >= 1 && monthVal <= 6) {
-            return 31;
-        } else if (monthVal >= 7 && monthVal <= 11) {
-            return 30;
-        } else if (monthVal == 12) {
-            if (PersianDate.isJalaliLeap(yearVal)) {
+        if (monthVal > 0) {
+            if (monthVal >= 1 && monthVal <= 6) {
+                return 31;
+            } else if (monthVal >= 7 && monthVal <= 11) {
                 return 30;
+            } else if (monthVal == 12) {
+                if (PersianDate.isJalaliLeap(yearVal)) {
+                    return 30;
+                } else {
+                    return 29;
+                }
             } else {
-                return 29;
+                return 31;
             }
         } else {
             return 31;

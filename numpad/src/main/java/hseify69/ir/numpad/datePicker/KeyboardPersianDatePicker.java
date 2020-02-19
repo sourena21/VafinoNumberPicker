@@ -3,7 +3,9 @@ package hseify69.ir.numpad.datePicker;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -17,6 +19,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.regex.Pattern;
+
 import hseify69.ir.numpad.R;
 import hseify69.ir.numpad.helpers.Consts;
 import hseify69.ir.numpad.helpers.Utils;
@@ -24,8 +28,8 @@ import hseify69.ir.numpad.keyboards.VafinoKeyboard;
 
 public class KeyboardPersianDatePicker extends LinearLayout {
 
-    int maxYear = Consts.maxYear;
-    int minYear = Consts.minYear;
+    int maxYear = 99;
+    int minYear = 0;
     int maxMonth = Consts.maxMonth;
     int minMonth = Consts.minMonth;
     int maxDay = Consts.maxDay;
@@ -71,8 +75,8 @@ public class KeyboardPersianDatePicker extends LinearLayout {
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.KeyboardPersianDatePicker);
 
-        setMaxYear(ta.getInteger(R.styleable.KeyboardPersianDatePicker_maxYear, Consts.maxYear));
-        setMinYear(ta.getInteger(R.styleable.KeyboardPersianDatePicker_minYear, Consts.minYear));
+        setMaxYear(ta.getInteger(R.styleable.KeyboardPersianDatePicker_maxYear, maxYear));
+        setMinYear(ta.getInteger(R.styleable.KeyboardPersianDatePicker_minYear, minYear));
         setYear(ta.getInteger(R.styleable.KeyboardPersianDatePicker_year, 0));
         setMonth(ta.getInteger(R.styleable.KeyboardPersianDatePicker_month, 0));
         setDay(ta.getInteger(R.styleable.KeyboardPersianDatePicker_day, 0));
@@ -89,7 +93,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
                 try {
                     year = Integer.parseInt(String.valueOf(s));
                     if (s.length() == 4) {
-                        maxDay = Utils.getDayRange(year, month);
+                        maxDay = Utils.getDayRange(year+1300, month);
                         setDayAmount();
                         if (year > maxYear) {
                             edtYear.setText(String.valueOf(maxYear));
@@ -116,7 +120,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
                 try {
                     month = Integer.parseInt(String.valueOf(s));
                     if (s.length() == 2 || month > 1) {
-                        maxDay = Utils.getDayRange(year, month);
+                        maxDay = Utils.getDayRange(year+1300, month);
                         setDayAmount();
                         if (month > maxMonth) {
                             edtMonth.setText(String.valueOf(maxMonth));
@@ -144,7 +148,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
                 try {
                     day = Integer.parseInt(String.valueOf(s));
                     if (s.length() == 2 || day > 3) {
-                        maxDay = Utils.getDayRange(year, month);
+                        maxDay = Utils.getDayRange(year+1300, month);
                         setDayAmount();
                         switchToInput(edtMonth);
                     }
@@ -188,9 +192,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
     }
 
     private void setDayAmount() {
-        if (edtYear.getText().length() > 0 &&
-                edtMonth.getText().length() > 0 &&
-                edtDay.getText().length() > 0) {
+        if (edtDay.getText().length() > 0) {
             if (day > maxDay) {
                 day = maxDay;
                 edtDay.setText(String.valueOf(maxDay));
@@ -214,7 +216,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
     }
 
     public void setMaxYear(int max) {
-        if (max > minYear) {
+        if (max > minYear && max < 100) {
             maxYear = max;
         }
     }
@@ -224,7 +226,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
     }
 
     public void setMinYear(int min) {
-        if (min < maxYear) {
+        if (min < maxYear && min > 0) {
             this.minYear = min;
         }
     }
@@ -234,11 +236,21 @@ public class KeyboardPersianDatePicker extends LinearLayout {
     }
 
     public void setYear(int y) {
-        if (y > 0 && y <= maxYear && y >= minYear) {
-            year = y;
-            edtYear.setText(String.valueOf(y));
-            maxDay = Utils.getDayRange(year, month);
-            setDay(day);
+        if (y > 1300) {
+            y -= 1300;
+            if (y <= maxYear && y >= minYear) {
+                year = y;
+                edtYear.setText(String.valueOf(y));
+                maxDay = Utils.getDayRange(year+1300, month);
+                setDay(day);
+            }
+        } else if (y < 100 && y >= 0) {
+            if (y <= maxYear && y >= minYear) {
+                year = y;
+                edtYear.setText(String.valueOf(y));
+                maxDay = Utils.getDayRange(year+1300, month);
+                setDay(day);
+            }
         }
     }
 
@@ -250,7 +262,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
         if (m <= maxMonth && m >= minMonth) {
             month = m;
             edtMonth.setText(String.valueOf(m));
-            maxDay = Utils.getDayRange(year, month);
+            maxDay = Utils.getDayRange(year+1300, month);
             setDay(day);
         }
     }
@@ -263,7 +275,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
         if (d <= maxDay && d >= minDay) {
             day = d;
             edtDay.setText(String.valueOf(d));
-            maxDay = Utils.getDayRange(year, month);
+            maxDay = Utils.getDayRange(year+1300, month);
         }
     }
 
@@ -275,7 +287,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
             if (y >= minYear && y <= maxYear &&
                     m >= minMonth && m <= maxMonth &&
                     d >= minDay && d <= Utils.getDayRange(y, m)) {
-                return y + "/" + m + "/" + d;
+                return (y + 1300) + "/" + m + "/" + d;
             } else {
                 return null;
             }
