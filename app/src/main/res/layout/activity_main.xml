@@ -10,62 +10,35 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:visibility="gone">
+        android:orientation="horizontal">
 
-        <RelativeLayout
+        <EditText
+            android:id="@+id/edtName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="نام" />
 
-            <TextView
-                android:id="@+id/edtName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:gravity="center"
-                android:hint="نام" />
 
-            <View
-                android:id="@+id/vwName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/edtName"
-                android:layout_alignBottom="@id/edtName" />
-        </RelativeLayout>
-
-        <RelativeLayout
+        <EditText
+            android:id="@+id/edtFamily"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/edtFamily"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:gravity="center"
-                android:hint="نام خانوادگی" />
-
-            <View
-                android:id="@+id/vwFamily"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/edtFamily"
-                android:layout_alignBottom="@id/edtFamily" />
-        </RelativeLayout>
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="نام خانوادگی" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnSubmitDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Submit" />
-
-    <hseify69.ir.numpad.datePicker.KeyboardPersianDatePicker
+    <hseify69.ir.numpad.keyboards.VafinoKeyboard
         android:id="@+id/keyboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        app:displayVisibility="gone"
+        app:showEnterInPersian="true"
+        app:showInputTypeSelection="true"
+        app:showPunctuationsInPersian="true" />
 </RelativeLayout>
