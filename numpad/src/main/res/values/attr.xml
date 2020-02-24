@@ -2,8 +2,12 @@
 <resources>
     <declare-styleable name="VafinoKeyboard">
         <attr name="inputType" format="string">
-            <enum name="persian" value="1" />
+            <enum name="text" value="1" />
             <enum name="number_decimal" value="2" />
+        </attr>
+        <attr name="language" format="string">
+            <enum name="persian" value="1" />
+            <enum name="english" value="2" />
         </attr>
         <attr name="displayVisibility" format="integer">
             <enum name="visible" value="0" />
@@ -19,7 +23,7 @@
         <attr name="inputTextSize" format="dimension" />
         <attr name="showPersianCharPopup" format="boolean" />
         <attr name="showSubmitButton" format="boolean" />
-        <attr name="showInputTypeSelection" format="boolean" />
+        <attr name="showLanguageSelectionButton" format="boolean" />
         <attr name="showEnterInPersian" format="boolean" />
         <attr name="showPunctuationsInPersian" format="boolean" />
         <attr name="setSubmitText" format="string" />

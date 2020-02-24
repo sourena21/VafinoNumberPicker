@@ -5,15 +5,12 @@ import android.content.res.TypedArray;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import hseify69.ir.numpad.R;
 import hseify69.ir.numpad.helpers.Utils;
@@ -26,14 +23,14 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     int textColor = 0;
     int hintColor = 0;
     int inputType = 0;
+    int language = 1;
     int displayVisibility = 0;
     boolean showCharPopup = false;
     boolean showSubmitButton = false;
     boolean showEnterButton = false;
     boolean showPunctuations = true;
-    boolean showInputTypeSelection = false;
+    boolean showLanguageSelectionButton = true;
     float textSize;
-    // Our communication link to the EditText
     InputConnection inputConnection;
 
     OnMobileDetected onMobileDetected;
@@ -45,8 +42,6 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     View v;
     LinearLayout llKeyboardBox, llKeypadBox;
     EditText edtInput;
-    RadioGroup rgInputType;
-    RadioButton rbPersian, rbDecimal;
 
     public VafinoKeyboard(Context context) {
         super(context);
@@ -64,19 +59,16 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     }
 
     private void initView(Context context, AttributeSet attrs) {
-        this.removeAllViews();
-        v = View.inflate(context, R.layout.vafino_keyboard, null);
+        LayoutInflater.from(context).inflate(R.layout.vafino_keyboard, this, true);
 
-        llKeyboardBox = v.findViewById(R.id.VK_llKeyboardBox);
-        llKeypadBox = v.findViewById(R.id.VK_rlKeypadBox);
-        edtInput = v.findViewById(R.id.VK_edtInput);
-        rgInputType = v.findViewById(R.id.VK_rgInputType);
-        rbPersian = v.findViewById(R.id.VK_rbPersian);
-        rbDecimal = v.findViewById(R.id.VK_rbDecimal);
+        llKeyboardBox = findViewById(R.id.VK_llKeyboardBox);
+        llKeypadBox = findViewById(R.id.VK_rlKeypadBox);
+        edtInput = findViewById(R.id.VK_edtInput);
 
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.VafinoKeyboard);
 
         inputType = ta.getInteger(R.styleable.VafinoKeyboard_inputType, 1);
+        language = ta.getInteger(R.styleable.VafinoKeyboard_language, 1);
         displayVisibility = ta.getInteger(R.styleable.VafinoKeyboard_displayVisibility, VISIBLE);
         maxLength = ta.getInteger(R.styleable.VafinoKeyboard_maxLeangth, Integer.MAX_VALUE);
         String tempHint = ta.getString(R.styleable.VafinoKeyboard_inputHintText);
@@ -96,7 +88,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         showSubmitButton = ta.getBoolean(R.styleable.VafinoKeyboard_showSubmitButton, false);
         showEnterButton = ta.getBoolean(R.styleable.VafinoKeyboard_showEnterInPersian, false);
         showPunctuations = ta.getBoolean(R.styleable.VafinoKeyboard_showPunctuationsInPersian, true);
-        showInputTypeSelection = ta.getBoolean(R.styleable.VafinoKeyboard_showInputTypeSelection, false);
+        showLanguageSelectionButton = ta.getBoolean(R.styleable.VafinoKeyboard_showLanguageSelectionButton, true);
 
         edtInput.setHint(hintText);
         if (tempValue != null && tempValue.length() > 0) {
@@ -106,55 +98,35 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         edtInput.setHintTextColor(hintColor);
         edtInput.setTextSize(textSize);
 
-        setShowInputTypeSelection(showInputTypeSelection);
         setDisplayVisibility(displayVisibility);
         setInputType(inputType);
 
-        rbPersian.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    initKeyboardByPersian(getContext());
-                }
-            }
-        });
-        rbDecimal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    initKeyboardByDecimal(getContext());
-                }
-            }
-        });
-
         // prevent system keyboard from appearing when EditText is tapped
-        edtInput.setRawInputType(InputType.TYPE_CLASS_TEXT);
+//        edtInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         edtInput.setTextIsSelectable(true);
 
         // pass the InputConnection from the EditText to the keyboard
         InputConnection ic = edtInput.onCreateInputConnection(new EditorInfo());
         this.setInputConnection(ic);
-
-        this.addView(v);
     }
 
-    // The activity (or some parent or controller) must give us
-    // a reference to the current EditText's InputConnection
     public void setInputConnection(InputConnection ic) {
         this.inputConnection = ic;
     }
 
     public void initKeyboardByPersian(Context context) {
-        PersianKeypad persianKeypad = new PersianKeypad(context);
-        persianKeypad.setOnKeypadEvent(this);
-        persianKeypad.setShowCharPopup(showCharPopup);
-        persianKeypad.setShowEnterButton(showEnterButton);
-        persianKeypad.setShowPunctuations(showPunctuations);
-        persianKeypad.setSubmitButtonText(submitButtonText);
-        persianKeypad.setTextColor(textColor);
-        persianKeypad.setAllTextSize(textSize);
+        AlphabetKeypad alphabetKeypad = new AlphabetKeypad(context);
+        alphabetKeypad.setOnKeypadEvent(this);
+        alphabetKeypad.setShowCharPopup(showCharPopup);
+        alphabetKeypad.setShowEnterButton(showEnterButton);
+        alphabetKeypad.setShowPunctuations(showPunctuations);
+        alphabetKeypad.setLanguage(language);
+        alphabetKeypad.setShowLanguageSelectionButton(showLanguageSelectionButton);
+        alphabetKeypad.setSubmitButtonText(submitButtonText);
+        alphabetKeypad.setTextColor(textColor);
+        alphabetKeypad.setAllTextSize(textSize);
         llKeypadBox.removeAllViews();
-        llKeypadBox.addView(persianKeypad);
+        llKeypadBox.addView(alphabetKeypad);
     }
 
     public void initKeyboardByDecimal(Context context) {
@@ -199,8 +171,6 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
 
     private void addChar(char c) {
         if (edtInput.getText().toString().length() < maxLength) {
-//            enteredNumber += c;
-//            showEnteredNumber(enteredNumber);
             inputConnection.commitText(String.valueOf(c), 1);
             if (onNumberEnter != null) {
                 onNumberEnter.onEnter(c, edtInput.getText().toString());
@@ -302,7 +272,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         }
 
         // prevent system keyboard from appearing when EditText is tapped
-        edt.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        edt.setInputType(edtInput.getInputType());
         edt.setTextIsSelectable(true);
 
         // pass the InputConnection from the EditText to the keyboard
@@ -326,19 +296,6 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         this.showSubmitButton = showSubmitButton;
     }
 
-    public boolean isShowInputTypeSelection() {
-        return showInputTypeSelection;
-    }
-
-    public void setShowInputTypeSelection(boolean showInputTypeSelection) {
-        this.showInputTypeSelection = showInputTypeSelection;
-        if (showInputTypeSelection) {
-            rgInputType.setVisibility(VISIBLE);
-        } else {
-            rgInputType.setVisibility(GONE);
-        }
-    }
-
     public int getInputType() {
         return inputType;
     }
@@ -348,15 +305,12 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         switch (inputType) {
             case 1:
                 initKeyboardByPersian(getContext());
-                rbPersian.setChecked(true);
                 break;
             case 2:
                 initKeyboardByDecimal(getContext());
-                rbDecimal.setChecked(true);
                 break;
             default:
                 initKeyboardByPersian(getContext());
-                rbPersian.setChecked(true);
                 break;
         }
     }

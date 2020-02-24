@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="KeyboardButton">
+        <item name="android:background">@drawable/numpad_button_background_transparent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">@dimen/text_large_size</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+</resources>

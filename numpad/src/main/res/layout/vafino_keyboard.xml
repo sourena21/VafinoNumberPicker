@@ -17,39 +17,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="56dp"
             android:layout_marginRight="56dp"
+            android:inputType="text|textMultiLine|textCapSentences"
             android:layout_marginBottom="56dp"
             android:gravity="center"
             android:padding="8dp"
             android:textColor="@color/colorGrayDark"
             android:textSize="@dimen/text_extra_large_size"
             android:textStyle="bold" />
-
-        <RadioGroup
-            android:id="@+id/VK_rgInputType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/VK_rbPersian"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="فارسی"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_extra_large_size" />
-
-            <RadioButton
-                android:id="@+id/VK_rbDecimal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="عددی"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_extra_large_size" />
-        </RadioGroup>
 
         <LinearLayout
             android:id="@+id/VK_rlKeypadBox"

@@ -12,4 +12,9 @@ public class Consts {
     public static int maxMonth = 12;
     public static int minDay = 1;
     public static int maxDay = 31;
+
+    public enum Language {
+        PERSIAN,
+        ENGLISH
+    }
 }

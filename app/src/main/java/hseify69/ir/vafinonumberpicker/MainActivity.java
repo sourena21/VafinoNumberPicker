@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
@@ -21,7 +22,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class MainActivity extends Activity {
 
     VafinoKeyboard keyboard;
-    EditText edtName, edtFamily;
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,31 +30,15 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         keyboard = findViewById(R.id.keyboard);
-        edtName = findViewById(R.id.edtName);
-        edtFamily = findViewById(R.id.edtFamily);
+        editText = findViewById(R.id.editText);
 
-        edtName.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        edtName.setTextIsSelectable(true);
-        edtFamily.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        edtFamily.setTextIsSelectable(true);
+        editText.requestFocus();
+        keyboard.setInput(editText);
 
-        edtName.requestFocus();
-        keyboard.setInput(edtName);
-
-        edtName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        keyboard.setOnChangeEntered(new VafinoKeyboard.OnChangeEntered() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    keyboard.setInput(edtName);
-                }
-            }
-        });
-        edtFamily.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    keyboard.setInput(edtFamily);
-                }
+            public void onChange(String wholeEntered) {
+                Log.d("CHANGE_ENTERED", "input: " + wholeEntered);
             }
         });
     }

@@ -5,32 +5,12 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl">
 
-    <LinearLayout
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/edtName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:hint="نام" />
-
-
-        <EditText
-            android:id="@+id/edtFamily"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:hint="نام خانوادگی" />
-    </LinearLayout>
+        android:layout_margin="16dp" />
 
     <hseify69.ir.numpad.keyboards.VafinoKeyboard
         android:id="@+id/keyboard"
@@ -38,7 +18,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:displayVisibility="gone"
+        app:inputType="text"
+        app:language="english"
         app:showEnterInPersian="true"
-        app:showInputTypeSelection="true"
+        app:showLanguageSelectionButton="false"
         app:showPunctuationsInPersian="true" />
 </RelativeLayout>
