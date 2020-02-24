@@ -21,6 +21,5 @@
         app:inputType="text"
         app:language="english"
         app:showEnterInPersian="true"
-        app:showLanguageSelectionButton="false"
         app:showPunctuationsInPersian="true" />
 </RelativeLayout>

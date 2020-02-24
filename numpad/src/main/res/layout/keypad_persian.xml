@@ -183,6 +183,16 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:text="ش" />
+
+            <ImageButton
+                android:id="@+id/KDP_imbCapsLock"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:background="@color/transparent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/ic_capslock" />
         </LinearLayout>
 
         <LinearLayout
@@ -269,6 +279,17 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:text="ظ" />
+
+            <ImageButton
+                android:id="@+id/KDP_imbShift"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@id/KDP_btnPunctuations"
+                android:background="@drawable/numpad_button_background_transparent"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_shift_button_unselected"
+                android:tint="@color/colorBlack" />
         </LinearLayout>
 
         <RelativeLayout

@@ -44,7 +44,7 @@ public class AlphabetKeypad extends LinearLayout {
             btnChar17, btnChar18, btnChar19, btnChar20, btnChar21, btnChar22, btnChar23, btnChar24,
             btnChar25, btnChar26, btnChar27, btnChar28, btnChar29, btnChar30, btnChar31, btnChar32,
             btnChar33, btnChar34, btnPunctuations;
-    ImageButton imbBackSpace, imbEnter, imbCharSpace, imbLanguage;
+    ImageButton imbBackSpace, imbEnter, imbCharSpace, imbLanguage, imbCapslock, imbShift;
     int textColor;
     boolean showEnterButton;
     boolean showPunctuations;
@@ -105,6 +105,8 @@ public class AlphabetKeypad extends LinearLayout {
         btnChar34 = findViewById(R.id.KDP_btnChar34);
         imbCharSpace = findViewById(R.id.KDP_imbCharSpace);
         imbEnter = findViewById(R.id.KDP_imbCharEnter);
+        imbCapslock = findViewById(R.id.KDP_imbCapsLock);
+        imbShift = findViewById(R.id.KDP_imbShift);
         imbLanguage = findViewById(R.id.KDP_imbLanguage);
         imbBackSpace = findViewById(R.id.KDP_imbBackSpace);
         btnPunctuations = findViewById(R.id.KDP_btnPunctuations);
@@ -337,9 +339,40 @@ public class AlphabetKeypad extends LinearLayout {
                 backSpaceLast();
             }
         });
+        imbCapslock.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isShifSelected = false;
+                if (isCapsLockSelected) {
+                    setEnglishAlphabet();
+                    imbCapslock.setBackgroundResource(R.color.transparent);
+                } else {
+                    imbCapslock.setBackgroundResource(R.drawable.numpad_button_background_transparent_pressed);
+                    imbShift.setImageResource(R.drawable.ic_shift_button_unselected);
+                    setEnglishCapsLock();
+                }
+            }
+        });
+        imbShift.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isShifSelected) {
+                    isShifSelected = false;
+                    setEnglishAlphabet();
+                    imbShift.setImageResource(R.drawable.ic_shift_button_unselected);
+                } else {
+                    isShifSelected = true;
+                    setEnglishCapsLock();
+                    imbCapslock.setBackgroundResource(R.color.transparent);
+                    imbShift.setImageResource(R.drawable.ic_shift_button_selected);
+                }
+            }
+        });
         imbLanguage.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                imbCapslock.setBackgroundResource(R.color.transparent);
+                imbShift.setImageResource(R.drawable.ic_shift_button_unselected);
                 isPunctuationSelected = false;
                 if (language == Language.PERSIAN) {
                     language = Language.ENGLISH;
@@ -353,6 +386,8 @@ public class AlphabetKeypad extends LinearLayout {
         btnPunctuations.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                imbCapslock.setBackgroundResource(R.color.transparent);
+                imbShift.setImageResource(R.drawable.ic_shift_button_unselected);
                 if (isPunctuationSelected) {
                     changeLanguage(language);
                 } else {
@@ -398,12 +433,12 @@ public class AlphabetKeypad extends LinearLayout {
         } else if (language == Language.ENGLISH) {
             if (isPunctuationSelected) {
                 addChar(v, englishAlphabet[0][i]);
-            } else if (isCapsLockSelected) {
-                addChar(v, englishAlphabet[2][i]);
             } else if (isShifSelected) {
                 addChar(v, englishAlphabet[2][i]);
                 isShifSelected = false;
                 setEnglishAlphabet();
+            } else if (isCapsLockSelected) {
+                addChar(v, englishAlphabet[2][i]);
             } else {
                 addChar(v, englishAlphabet[1][i]);
             }
@@ -411,6 +446,8 @@ public class AlphabetKeypad extends LinearLayout {
     }
 
     private void setPersianPunctuation() {
+        imbCapslock.setVisibility(GONE);
+        imbShift.setVisibility(GONE);
         setVisibilityButtons();
         isPunctuationSelected = true;
         btnPunctuations.setText("ابپ");
@@ -457,6 +494,8 @@ public class AlphabetKeypad extends LinearLayout {
     }
 
     private void setPersianAlphabet() {
+        imbCapslock.setVisibility(GONE);
+        imbShift.setVisibility(GONE);
         setVisibilityButtons();
         isPunctuationSelected = false;
         btnPunctuations.setText("123؟");
@@ -498,6 +537,8 @@ public class AlphabetKeypad extends LinearLayout {
     }
 
     private void setEnglishPunctuation() {
+        imbCapslock.setVisibility(GONE);
+        imbShift.setVisibility(GONE);
         setVisibilityButtons();
         isPunctuationSelected = true;
         isCapsLockSelected = false;
@@ -545,6 +586,8 @@ public class AlphabetKeypad extends LinearLayout {
     }
 
     private void setEnglishCapsLock() {
+        imbCapslock.setVisibility(VISIBLE);
+        imbShift.setVisibility(VISIBLE);
         setVisibilityButtons();
         isPunctuationSelected = false;
         isCapsLockSelected = true;
@@ -594,8 +637,13 @@ public class AlphabetKeypad extends LinearLayout {
     }
 
     private void setEnglishAlphabet() {
+        imbCapslock.setVisibility(VISIBLE);
+        imbShift.setVisibility(VISIBLE);
+        imbShift.setImageResource(R.drawable.ic_shift_button_unselected);
+        imbCapslock.setBackgroundResource(R.color.transparent);
         setVisibilityButtons();
         isPunctuationSelected = false;
+        isShifSelected = false;
         isCapsLockSelected = false;
         btnPunctuations.setText("123?");
 //        btnChar0.setText(String.valueOf(englishAlphabet[1][0]));
