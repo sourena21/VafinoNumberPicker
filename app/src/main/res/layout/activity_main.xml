@@ -19,7 +19,7 @@
         android:layout_alignParentBottom="true"
         app:displayVisibility="gone"
         app:inputType="text"
-        app:language="english"
-        app:showEnterInPersian="true"
-        app:showPunctuationsInPersian="true" />
+        app:language="persian"
+        app:showEnterInPersian="false"
+        app:showPunctuationsInPersian="false" />
 </RelativeLayout>

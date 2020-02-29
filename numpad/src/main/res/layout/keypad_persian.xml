@@ -337,26 +337,33 @@
                 android:paddingRight="10dp"
                 android:src="@drawable/ic_space_bar" />
 
-            <ImageButton
-                android:id="@+id/KDP_imbLanguage"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_toRightOf="@id/KDP_btnPunctuations"
-                android:background="@drawable/numpad_button_background_transparent"
-                android:padding="8dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_language"
-                android:tint="@color/colorBlack" />
-
-            <Button
-                android:id="@+id/KDP_btnPunctuations"
-                android:layout_width="40dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
-                android:background="@drawable/numpad_button_background_transparent"
-                android:text="123؟"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_large_size" />
+                android:gravity="left"
+                android:layoutDirection="ltr"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/KDP_btnPunctuations"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/numpad_button_background_transparent"
+                    android:text="123؟"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_large_size" />
+
+                <ImageButton
+                    android:id="@+id/KDP_imbLanguage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/numpad_button_background_transparent"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_language"
+                    android:tint="@color/colorBlack" />
+            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 </merge>

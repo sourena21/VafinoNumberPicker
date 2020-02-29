@@ -908,7 +908,7 @@ public class AlphabetKeypad extends LinearLayout {
         } else {
             btnChar33.setVisibility(GONE);
             btnChar34.setVisibility(GONE);
-            btnPunctuations.setVisibility(GONE);
+            btnPunctuations.setVisibility(INVISIBLE);
         }
     }
 
