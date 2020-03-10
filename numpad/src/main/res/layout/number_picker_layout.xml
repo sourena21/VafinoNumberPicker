@@ -19,7 +19,7 @@
                 android:padding="4dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_add_circle"
-                android:tint="@color/colorBlue" />
+                android:tint="@color/colorGreen" />
 
             <TextView
                 android:id="@+id/txtCount"

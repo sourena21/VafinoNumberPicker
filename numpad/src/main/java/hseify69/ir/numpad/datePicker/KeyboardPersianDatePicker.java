@@ -29,7 +29,7 @@ import hseify69.ir.numpad.keyboards.VafinoKeyboard;
 public class KeyboardPersianDatePicker extends LinearLayout {
 
     int maxYear = 99;
-    int minYear = 1;
+    int minYear = 0;
     int maxMonth = Consts.maxMonth;
     int minMonth = Consts.minMonth;
     int maxDay = Consts.maxDay;

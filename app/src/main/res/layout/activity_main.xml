@@ -5,21 +5,16 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnShowDate"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="16dp" />
+        android:text="show date" />
 
-    <hseify69.ir.numpad.keyboards.VafinoKeyboard
+    <hseify69.ir.numpad.datePicker.KeyboardPersianDatePicker
         android:id="@+id/keyboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:displayVisibility="gone"
-        app:inputType="text"
-        app:language="persian"
-        app:showEnterInPersian="false"
-        app:showPunctuationsInPersian="false" />
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

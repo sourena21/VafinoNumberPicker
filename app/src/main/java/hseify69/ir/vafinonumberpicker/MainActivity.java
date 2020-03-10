@@ -21,26 +21,40 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends Activity {
 
-    VafinoKeyboard keyboard;
-    EditText editText;
+//    VafinoKeyboard keyboard;
+//    EditText editText;
+
+    KeyboardPersianDatePicker datePicker;
+    Button btnShowDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        keyboard = findViewById(R.id.keyboard);
-        editText = findViewById(R.id.editText);
+        btnShowDate = findViewById(R.id.btnShowDate);
+        datePicker = findViewById(R.id.keyboard);
 
-        editText.requestFocus();
-        keyboard.setInput(editText);
-
-        keyboard.setOnChangeEntered(new VafinoKeyboard.OnChangeEntered() {
+        btnShowDate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChange(String wholeEntered) {
-                Log.d("CHANGE_ENTERED", "input: " + wholeEntered);
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "date: " + datePicker.getSelectedDate(),
+                        Toast.LENGTH_SHORT).show();
             }
         });
+
+//        keyboard = findViewById(R.id.keyboard);
+//        editText = findViewById(R.id.editText);
+//
+//        editText.requestFocus();
+//        keyboard.setInput(editText);
+//
+//        keyboard.setOnChangeEntered(new VafinoKeyboard.OnChangeEntered() {
+//            @Override
+//            public void onChange(String wholeEntered) {
+//                Log.d("CHANGE_ENTERED", "input: " + wholeEntered);
+//            }
+//        });
     }
 
     @Override
