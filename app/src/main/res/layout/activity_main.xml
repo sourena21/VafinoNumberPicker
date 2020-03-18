@@ -5,16 +5,11 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl">
 
-    <Button
-        android:id="@+id/btnShowDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="show date" />
-
-    <hseify69.ir.numpad.datePicker.KeyboardPersianDatePicker
+    <hseify69.ir.numpad.keyboards.VafinoKeyboard
         android:id="@+id/keyboard"
         android:layout_width="match_parent"
+        app:textDirection="ltr"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        app:inputType="number_decimal" />
 </RelativeLayout>

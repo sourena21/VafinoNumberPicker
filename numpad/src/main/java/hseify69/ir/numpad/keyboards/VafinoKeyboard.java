@@ -2,6 +2,7 @@ package hseify69.ir.numpad.keyboards;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -12,6 +13,8 @@ import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import androidx.annotation.RequiresApi;
+
 import hseify69.ir.numpad.R;
 import hseify69.ir.numpad.helpers.Utils;
 
@@ -21,6 +24,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
     String hintText = "";
     int maxLength = Integer.MAX_VALUE;
     int textColor = 0;
+    int textDirection = 0;
     int hintColor = 0;
     int inputType = 0;
     int language = 1;
@@ -68,6 +72,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.VafinoKeyboard);
 
         inputType = ta.getInteger(R.styleable.VafinoKeyboard_inputType, 1);
+        textDirection = ta.getInteger(R.styleable.VafinoKeyboard_textDirection, 0);
         language = ta.getInteger(R.styleable.VafinoKeyboard_language, 1);
         displayVisibility = ta.getInteger(R.styleable.VafinoKeyboard_displayVisibility, VISIBLE);
         maxLength = ta.getInteger(R.styleable.VafinoKeyboard_maxLeangth, Integer.MAX_VALUE);
@@ -98,6 +103,7 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
         edtInput.setHintTextColor(hintColor);
         edtInput.setTextSize(textSize);
 
+        setTextDirection(textDirection);
         setDisplayVisibility(displayVisibility);
         setInputType(inputType);
 
@@ -334,6 +340,17 @@ public class VafinoKeyboard extends LinearLayout implements OnKeypadEvent {
             default:
                 setInputDisplayVisibility(VISIBLE);
                 break;
+        }
+    }
+
+    public int getTextDirection() {
+        return textDirection;
+    }
+
+    public void setTextDirection(int textDirection) {
+        if (textDirection == View.TEXT_DIRECTION_LTR || textDirection == View.TEXT_DIRECTION_RTL) {
+            this.textDirection = textDirection;
+            edtInput.setTextDirection(textDirection);
         }
     }
 
