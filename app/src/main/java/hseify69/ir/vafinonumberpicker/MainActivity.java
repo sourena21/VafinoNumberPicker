@@ -17,6 +17,7 @@ import hseify69.ir.numpad.datePicker.KeyboardPersianDatePicker;
 import hseify69.ir.numpad.datePicker.NumberPersianDatePicker;
 import hseify69.ir.numpad.helpers.Consts;
 import hseify69.ir.numpad.keyboards.VafinoKeyboard;
+import hseify69.ir.numpad.numberPicker.NumberPicker;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends Activity {
@@ -33,7 +34,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 //
 //        btnShowDate = findViewById(R.id.btnShowDate);
-//        datePicker = findViewById(R.id.keyboard);
+        NumberPicker numberPicker=findViewById(R.id.keyboard);
+        numberPicker.setEditable(true);
 //
 //        btnShowDate.setOnClickListener(new View.OnClickListener() {
 //            @Override

@@ -34,6 +34,7 @@
     </declare-styleable>
 
     <declare-styleable name="NumberPicker">
+        <attr name="editable" format="boolean" />
         <attr name="showLimitMessage" format="boolean" />
         <attr name="maxValue" format="integer" />
         <attr name="minValue" format="integer" />

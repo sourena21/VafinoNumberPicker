@@ -19,6 +19,7 @@ import hseify69.ir.numpad.helpers.Consts;
 
 public class NumberPicker extends LinearLayout {
 
+    boolean editable = true;
     boolean showLimitMessage = false;
     DecimalFormat formatter;
     int value = Consts.initValue;
@@ -55,6 +56,7 @@ public class NumberPicker extends LinearLayout {
 
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.NumberPicker);
 
+        editable = ta.getBoolean(R.styleable.NumberPicker_editable, true);
         showLimitMessage = ta.getBoolean(R.styleable.NumberPicker_showLimitMessage, false);
         setValue(ta.getInteger(R.styleable.NumberPicker_value, Consts.initValue));
         setMaxValue(ta.getInteger(R.styleable.NumberPicker_maxValue, Consts.initMaxValue));
@@ -65,12 +67,14 @@ public class NumberPicker extends LinearLayout {
         imbDecrease.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in));
-                if (value > minValue) {
-                    value--;
-                    txtCount.setText(formatter.format(value));
-                    if (onChangeValue != null) {
-                        onChangeValue.onDecrease(value);
+                if (editable) {
+                    view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in));
+                    if (value > minValue) {
+                        value--;
+                        txtCount.setText(formatter.format(value));
+                        if (onChangeValue != null) {
+                            onChangeValue.onDecrease(value);
+                        }
                     }
                 }
             }
@@ -78,15 +82,17 @@ public class NumberPicker extends LinearLayout {
         imbIncrease.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in));
-                if (value < maxValue) {
-                    value++;
-                    txtCount.setText(formatter.format(value));
-                    if (onChangeValue != null) {
-                        onChangeValue.onIncrease(value);
+                if (editable) {
+                    view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in));
+                    if (value < maxValue) {
+                        value++;
+                        txtCount.setText(formatter.format(value));
+                        if (onChangeValue != null) {
+                            onChangeValue.onIncrease(value);
+                        }
+                    } else {
+                        Toast.makeText(context, "موجودی کافی نیست!", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(context, "موجودی کافی نیست!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -131,6 +137,14 @@ public class NumberPicker extends LinearLayout {
             value = max;
             txtCount.setText(formatter.format(value));
         }
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     public interface OnChangeValue {
