@@ -93,7 +93,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
                 try {
                     year = Integer.parseInt(String.valueOf(s));
                     if (s.length() == 4) {
-                        maxDay = Utils.getDayRange(year+1300, month);
+                        maxDay = Utils.getDayRange(year + 1300, month);
                         setDayAmount();
                         if (year > maxYear) {
                             edtYear.setText(String.valueOf(maxYear));
@@ -120,7 +120,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
                 try {
                     month = Integer.parseInt(String.valueOf(s));
                     if (s.length() == 2 || month > 1) {
-                        maxDay = Utils.getDayRange(year+1300, month);
+                        maxDay = Utils.getDayRange(year + 1300, month);
                         setDayAmount();
                         if (month > maxMonth) {
                             edtMonth.setText(String.valueOf(maxMonth));
@@ -148,7 +148,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
                 try {
                     day = Integer.parseInt(String.valueOf(s));
                     if (s.length() == 2 || day > 3) {
-                        maxDay = Utils.getDayRange(year+1300, month);
+                        maxDay = Utils.getDayRange(year + 1300, month);
                         setDayAmount();
                         switchToInput(edtMonth);
                     }
@@ -241,14 +241,18 @@ public class KeyboardPersianDatePicker extends LinearLayout {
             if (y <= maxYear && y >= minYear) {
                 year = y;
                 edtYear.setText(String.valueOf(y));
-                maxDay = Utils.getDayRange(year+1300, month);
+                maxDay = Utils.getDayRange(year + 1300, month);
                 setDay(day);
             }
-        } else if (y < 100 && y > 0) {
+        } else if (y < 100 && y >= 0) {
             if (y <= maxYear && y >= minYear) {
                 year = y;
                 edtYear.setText(String.valueOf(y));
-                maxDay = Utils.getDayRange(year+1300, month);
+                if (y == 0) {
+                    maxDay = Utils.getDayRange(1400, month);
+                } else {
+                    maxDay = Utils.getDayRange(year + 1300, month);
+                }
                 setDay(day);
             }
         }
@@ -262,7 +266,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
         if (m <= maxMonth && m >= minMonth) {
             month = m;
             edtMonth.setText(String.valueOf(m));
-            maxDay = Utils.getDayRange(year+1300, month);
+            maxDay = Utils.getDayRange(year + 1300, month);
             setDay(day);
         }
     }
@@ -275,7 +279,7 @@ public class KeyboardPersianDatePicker extends LinearLayout {
         if (d <= maxDay && d >= minDay) {
             day = d;
             edtDay.setText(String.valueOf(d));
-            maxDay = Utils.getDayRange(year+1300, month);
+            maxDay = Utils.getDayRange(year + 1300, month);
         }
     }
 
@@ -287,7 +291,11 @@ public class KeyboardPersianDatePicker extends LinearLayout {
             if (y >= minYear && y <= maxYear &&
                     m >= minMonth && m <= maxMonth &&
                     d >= minDay && d <= Utils.getDayRange(y, m)) {
-                return (y + 1300) + "/" + m + "/" + d;
+                if (y == 0) {
+                    return 1400 + "/" + m + "/" + d;
+                } else {
+                    return (y + 1300) + "/" + m + "/" + d;
+                }
             } else {
                 return null;
             }

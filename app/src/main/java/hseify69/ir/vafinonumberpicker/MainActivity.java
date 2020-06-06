@@ -25,25 +25,27 @@ public class MainActivity extends Activity {
 //    VafinoKeyboard keyboard;
 //    EditText editText;
 
-//    KeyboardPersianDatePicker datePicker;
-//    Button btnShowDate;
+    KeyboardPersianDatePicker datePicker;
+    Button btnShowDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //
-//        btnShowDate = findViewById(R.id.btnShowDate);
-        NumberPicker numberPicker=findViewById(R.id.keyboard);
-        numberPicker.setEditable(true);
+        btnShowDate = findViewById(R.id.btnSubmit);
+        datePicker=findViewById(R.id.keyboard);
+//        NumberPicker numberPicker=findViewById(R.id.keyboard);
+//        numberPicker.setEditable(true);
 //
-//        btnShowDate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(MainActivity.this, "date: " + datePicker.getSelectedDate(),
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        btnShowDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "date: " + datePicker.getSelectedDate(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 //        keyboard = findViewById(R.id.keyboard);
 //        editText = findViewById(R.id.editText);
