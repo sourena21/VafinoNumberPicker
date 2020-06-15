@@ -206,9 +206,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/numpad_button_background_transparent"
+                android:padding="4dp"
+                style="@style/KeyboardButton"
                 android:scaleType="fitCenter"
-                android:src="@drawable/background_backspace" />
+                android:src="@drawable/ic_keyboard_backspace" />
 
             <Button
                 android:id="@+id/KDP_btnChar7"

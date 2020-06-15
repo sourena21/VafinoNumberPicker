@@ -7,13 +7,11 @@
     android:layoutDirection="rtl"
     android:orientation="vertical">
 
-    <hseify69.ir.numpad.datePicker.KeyboardPersianDatePicker
+    <hseify69.ir.numpad.keyboards.VafinoKeyboard
         android:id="@+id/keyboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:day="12"
-        app:month="06"
-        app:year="00" />
+        app:inputType="number_decimal" />
 
     <Button
         android:id="@+id/btnSubmit"
