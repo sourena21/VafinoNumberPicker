@@ -143,11 +143,12 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_margin="8dp"
-                android:padding="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/numpad_button_background_white"
+                android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_keyboard_backspace" />
+                android:src="@drawable/ic_keyboard_backspace"
+                android:tint="@color/colorRed" />
 
             <Button
                 android:id="@+id/KD_btnNumber0"
