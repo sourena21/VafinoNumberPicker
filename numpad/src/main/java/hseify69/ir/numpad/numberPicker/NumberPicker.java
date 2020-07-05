@@ -116,10 +116,10 @@ public class NumberPicker extends LinearLayout {
     }
 
     public void setMinValue(int min) {
-        if (min < maxValue) {
+        if (min <= maxValue) {
             this.minValue = min;
         }
-        if (min > value) {
+        if (min >= value) {
             value = min;
             txtCount.setText(formatter.format(value));
         }
@@ -130,10 +130,10 @@ public class NumberPicker extends LinearLayout {
     }
 
     public void setMaxValue(int max) {
-        if (max > minValue) {
+        if (max >= minValue) {
             this.maxValue = max;
         }
-        if (max < value) {
+        if (max <= value) {
             value = max;
             txtCount.setText(formatter.format(value));
         }
